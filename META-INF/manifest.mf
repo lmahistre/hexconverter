@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+
+Name: hexc-32.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 3CCY9xXiw5SrysMdo6X99A==
+SHA1-Digest: MTAvf56a0eYMTX+qPQOKinX34WY=
+
+Name: hexc-48.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: ZVxRi+4GywyiiyyVie/isA==
+SHA1-Digest: mvtdRPfRZzYcjK3Uoz88vtYnNoo=
+
+Name: hexc-96.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: mcZGkYHujMIjH2QxGJKzeA==
+SHA1-Digest: zOrATWU71fZNNMTN7jeGzBp071I=
+
+Name: hexc.css
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: xnuoysiYTxjc2ALa/TBmow==
+SHA1-Digest: 3q6br4IFCvfkj/E2V9badyL3EtE=
+
+Name: hexc.html
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: kc64KXDSP/99BXyIqUU8Fw==
+SHA1-Digest: nBKPMwplBZ/FHIB7Ff62kAchMS0=
+
+Name: hexc.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: zEcxGg+HlDQlHrPt5OkkhA==
+SHA1-Digest: LyUx74SSLbEckr67OWSgIMN4Yzg=
+
+Name: manifest.json
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: Oi6Rh5XLGdiU/6YdnnMFGg==
+SHA1-Digest: iPq7dH4ct+YAOvMZSNgyxku98uM=
+

@@ -1,0 +1,18 @@
+{
+	"manifest_version": 2,
+	"name": "Hexconverter",
+	"version": "1.0.1",
+
+	"description": "Converts decimal,hexadecimal, binary and octal",
+	"icons": {
+		"32": "hexc-32.png",
+		"48": "hexc-48.png",
+		"96": "hexc-96.png"
+	},
+
+	"browser_action": {
+	  "default_icon": "hexc-32.png",
+	  "default_title": "Hexconverter",
+	  "default_popup": "hexc.html"
+	}
+}
