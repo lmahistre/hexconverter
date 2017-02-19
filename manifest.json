@@ -1,9 +1,10 @@
 {
 	"manifest_version": 2,
 	"name": "Hexconverter",
-	"version": "1.0.1",
+	"version": "1.1.0",
+	"author": "Lionel Mahistre",
 
-	"description": "Converts decimal,hexadecimal, binary and octal",
+	"description": "Decimal, hexadecimal, binary and octal converter",
 	"icons": {
 		"32": "hexc-32.png",
 		"48": "hexc-48.png",

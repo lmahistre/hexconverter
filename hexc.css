@@ -1,4 +1,15 @@
 input {
-	width: 100px;
+	width: 120px;
 	text-align: right;
+}
+td.label {
+	font-size: 12px;
+}
+
+td input {
+	border-color: #DDD;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 4px;
+	padding: 2px 4px;
 }
