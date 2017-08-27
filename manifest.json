@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Hexconverter",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"author": "Lionel Mahistre",
 
 	"description": "Decimal, hexadecimal, binary and octal converter",
