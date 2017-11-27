@@ -56,7 +56,7 @@ function convert(input, type) {
 
 	// From decimal
 	if (type == 'decimal') {
-		var dec = parseInt(input);
+		var dec = parseInt(unformatDec(input));
 		if (isNaN(dec)) {
 			dec = 0;
 		}
@@ -69,7 +69,7 @@ function convert(input, type) {
 
 	// From hexadecimal
 	else if (type == 'hexadecimal') {
-		var hex = input.toUpperCase();
+		var hex = unformatHex(input).toUpperCase();
 		hex = hex.replace(/[^A-F0-9]/g, '');
 		out.hexadecimal = hex;
 
@@ -104,7 +104,7 @@ function convert(input, type) {
 
 	// From binary
 	else if (type == 'binary') {
-		var bin = input.replace(/[^01]/g, '');
+		var bin = unformatBin(input).replace(/[^01]/g, '');
 		out.binary = bin;
 
 		// To decimal
@@ -122,7 +122,7 @@ function convert(input, type) {
 
 	// From octal
 	else if (type == 'octal') {
-		var oct = input.replace(/[^0-7]/g, '');
+		var oct = unformatOct(input).replace(/[^0-7]/g, '');
 		out.octal = oct;
 
 		// To decimal
@@ -137,14 +137,80 @@ function convert(input, type) {
 		out.binary = convertDecToBin(dec);
 		out.hexadecimal = convertDecToHex(dec);
 	}
+	else {
+		return;
+	}
+
+	// Formatting
+	out.binary = formatBin(out.binary);
+	out.octal = formatOct(out.octal);
+	out.decimal = formatDec(out.decimal);
+	out.hexadecimal = formatHex(out.hexadecimal);
+
 	return out;
+}
+
+
+function format(input, separator, size) {
+	var fmt = '';
+	if (input) {
+		for (var i = input.length - 1; i >= 0; i--) {
+			if ((input.length - i - 1) % size === 0 && fmt.length > 0) {
+				fmt = separator + fmt;
+			}
+			fmt = input[i] + fmt;
+		}
+	}
+	return fmt;
+}
+
+
+function formatBin(input) {
+	return format(input, ' ', 4);
+}
+
+
+function formatOct(input) {
+	return format(input, ' ', 4);
+}
+
+
+function formatDec(input) {
+	return format(''+input, ' ', 3);
+}
+
+
+function formatHex(input) {
+	return format(input, ' ', 2);
+}
+
+
+function unformatBin(input) {
+	return input.replace(/ /g, '');
+}
+
+
+function unformatOct(input) {
+	return input.replace(/ /g, '');
+}
+
+
+function unformatDec(input) {
+	return input.replace(/ /g, '');
+}
+
+
+function unformatHex(input) {
+	return input.replace(/ /g, '');
 }
 
 
 document.addEventListener("keyup", function(event) {
 	var out = convert(event.target.value, event.target.id);
-	for (var id in out) {
-		document.getElementById(id).value = out[id];
+	if (out) {
+		for (var id in out) {
+			document.getElementById(id).value = out[id];
+		}
 	}
 });
 

@@ -1,18 +1,35 @@
 body {
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: Helvetica, sans-serif, Arial;
+	font-size: 14px;
 }
 input {
-	width: 150px;
+	width: 180px;
 	text-align: right;
 }
 td.label {
-	font-size: 12px;
+	font-family: Helvetica, sans-serif, Arial;
+	font-size: 14px;
 }
 
 td input {
+	font-family: Helvetica, sans-serif, Arial;
+	font-size: 14px;
 	border-color: #DDD;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 4px;
 	padding: 2px 4px;
+}
+
+div.actions {
+	margin-top: 0.5em;
+}
+div.actions a.action {
+	text-decoration: none;
+	color: #000;
+	outline: none;
+}
+div.actions a.action img {
+	height: 18px;
+	width: 18px;
 }
