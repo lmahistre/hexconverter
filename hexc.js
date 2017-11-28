@@ -205,6 +205,22 @@ function unformatHex(input) {
 }
 
 
+function openNewWindow() {
+	try {
+		// var dec = parseInt(unformatDec(input));
+		var creating = browser.windows.create({
+			height : 240,
+			width : 300,
+			url : 'index.html',
+			type : 'popup',
+		});
+	}
+	catch (error) {
+		alert(error.message);
+	}
+}
+
+
 document.addEventListener("keyup", function(event) {
 	var out = convert(event.target.value, event.target.id);
 	if (out) {
@@ -214,3 +230,6 @@ document.addEventListener("keyup", function(event) {
 	}
 });
 
+document.getElementById('link_new_window').addEventListener('click', function(event) {
+	openNewWindow();
+});

@@ -3,7 +3,6 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Hexadecimal converter</title>
-		<script type="text/javascript" src="hexc.js"></script>
 		<link rel="stylesheet" type="text/css" href="hexc.css">
 	</head>
 	<body>
@@ -11,34 +10,36 @@
 			<tbody>
 				<tr>
 					<td class="label" title="Decimal">Dec</td>
-					<td>
+					<td class="input">
 						<input id="decimal" placeholder="decimal">
 					</td>
 				</tr>
 				<tr>
 					<td class="label" title="Hexadecimal">Hex</td>
-					<td>
+					<td class="input">
 						<input id="hexadecimal" placeholder="hexadecimal">
 					</td>
 				</tr>
 				<tr>
 					<td class="label" title="Binary">Bin</td>
-					<td>
+					<td class="input">
 						<input id="binary" placeholder="binary">
 					</td>
 				</tr>
 				<tr>
 					<td class="label" title="Octal">Oct</td>
-					<td>
+					<td class="input">
 						<input id="octal" placeholder="octal">
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		<div class="actions">
-			<a href="javascript:void(0);" class="action">
+			<a href="#" id="link_new_window" class="action" title="New window">
 				<img src="new_window.png">
 			</a>
+			<div class="clearfix"></div>
 		</div>
+		<script type="text/javascript" src="hexc.js"></script>
 	</body>
 </html>

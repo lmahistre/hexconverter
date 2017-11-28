@@ -12,8 +12,8 @@
 	},
 
 	"browser_action": {
-	  "default_icon": "hexc-32.png",
-	  "default_title": "Hexconverter",
-	  "default_popup": "hexc.html"
+		"default_icon": "hexc-32.png",
+		"default_title": "Hexconverter",
+		"default_popup": "index.html"
 	}
 }
