@@ -1,0 +1,22 @@
+{
+  "name": "Hexconverter",
+  "version": "0.0.0",
+  "description": "Library",
+  "main": "index.js",
+  "dependencies": {
+    "uglifyjs-webpack-plugin": "^1.1.1",
+    "webpack": "^2.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://lmahistre@github.com/lmahistre/ff-hexconverter.git"
+  },
+  "author": "Lionel Mahistre",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^1.1.1"
+  }
+}
