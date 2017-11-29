@@ -1,6 +1,6 @@
 - langues
-- nouvelle fenetre
 - formatage
 - validation W3C
 - boutons pour copier
 - copie avec / sans format
+- test unitaires

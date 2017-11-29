@@ -2,6 +2,7 @@ body {
 	font-family: Helvetica, sans-serif, Arial;
 	font-size: 14px;
 	padding: 4px;
+	background-color: #EEE;
 }
 input {
 	width: 100%;
@@ -10,16 +11,11 @@ input {
 table {
 	width: 100%;
 	margin-right: 4px;
-	// table-layout: fixed;
 }
 td.label {
 	font-family: Helvetica, sans-serif, Arial;
 	font-size: 14px;
 	width: 20px;
-}
-
-td.input {
-/*	padding: 0px 4px;*/
 }
 
 td.input input {

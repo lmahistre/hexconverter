@@ -56,12 +56,11 @@ function convert(input, type) {
 
 	// From decimal
 	if (type == 'decimal') {
-		var dec = parseInt(unformatDec(input));
+		var dec = parseInt(input);
 		if (isNaN(dec)) {
 			dec = 0;
 		}
 		out.decimal = dec;
-
 		out.hexadecimal = convertDecToHex(dec);
 		out.binary = convertDecToBin(dec);
 		out.octal = convertDecToOct(dec);
@@ -69,7 +68,7 @@ function convert(input, type) {
 
 	// From hexadecimal
 	else if (type == 'hexadecimal') {
-		var hex = unformatHex(input).toUpperCase();
+		var hex = input.toUpperCase();
 		hex = hex.replace(/[^A-F0-9]/g, '');
 		out.hexadecimal = hex;
 
@@ -104,7 +103,7 @@ function convert(input, type) {
 
 	// From binary
 	else if (type == 'binary') {
-		var bin = unformatBin(input).replace(/[^01]/g, '');
+		var bin = input.replace(/[^01]/g, '');
 		out.binary = bin;
 
 		// To decimal
@@ -122,7 +121,7 @@ function convert(input, type) {
 
 	// From octal
 	else if (type == 'octal') {
-		var oct = unformatOct(input).replace(/[^0-7]/g, '');
+		var oct = input.replace(/[^0-7]/g, '');
 		out.octal = oct;
 
 		// To decimal
@@ -142,10 +141,10 @@ function convert(input, type) {
 	}
 
 	// Formatting
-	out.binary = formatBin(out.binary);
-	out.octal = formatOct(out.octal);
-	out.decimal = formatDec(out.decimal);
-	out.hexadecimal = formatHex(out.hexadecimal);
+	out.binary = out.binary;
+	out.octal = out.octal;
+	out.decimal = out.decimal;
+	out.hexadecimal = out.hexadecimal;
 
 	return out;
 }
@@ -165,53 +164,14 @@ function format(input, separator, size) {
 }
 
 
-function formatBin(input) {
-	return format(input, ' ', 4);
-}
-
-
-function formatOct(input) {
-	return format(input, ' ', 4);
-}
-
-
-function formatDec(input) {
-	return format(''+input, ' ', 3);
-}
-
-
-function formatHex(input) {
-	return format(input, ' ', 2);
-}
-
-
-function unformatBin(input) {
-	return input.replace(/ /g, '');
-}
-
-
-function unformatOct(input) {
-	return input.replace(/ /g, '');
-}
-
-
-function unformatDec(input) {
-	return input.replace(/ /g, '');
-}
-
-
-function unformatHex(input) {
-	return input.replace(/ /g, '');
-}
-
-
 function openNewWindow() {
 	try {
-		// var dec = parseInt(unformatDec(input));
+		var input = document.getElementById('decimal').value;
+		var dec = parseInt(input);
 		var creating = browser.windows.create({
-			height : 240,
+			height : 220,
 			width : 300,
-			url : 'index.html',
+			url : 'index.html#'+(isNaN(dec) ? '' : dec),
 			type : 'popup',
 		});
 	}
@@ -221,15 +181,38 @@ function openNewWindow() {
 }
 
 
-document.addEventListener("keyup", function(event) {
-	var out = convert(event.target.value, event.target.id);
+function updateValues(inputValue, id) {
+	var out = convert(inputValue, id);
 	if (out) {
 		for (var id in out) {
 			document.getElementById(id).value = out[id];
 		}
 	}
-});
+}
 
-document.getElementById('link_new_window').addEventListener('click', function(event) {
-	openNewWindow();
-});
+
+function init() {
+	document.addEventListener("keyup", function(event) {
+		updateValues(event.target.value, event.target.id);
+	});
+	document.getElementById('link_new_window').addEventListener('click', function(event) {
+		openNewWindow();
+	});
+
+	setTimeout(function(){
+		document.getElementById('decimal').focus();
+	}, 100);
+
+	// Hash
+	var url = location.href;
+	if (url.indexOf('#') > -1) {
+		var decimal = parseInt(url.split('#')[1]);
+		if (!isNaN(decimal)) {
+			updateValues(decimal, 'decimal');
+		}
+		document.getElementsByClassName('actions')[0].remove();
+	}
+}
+
+
+document.addEventListener("DOMContentLoaded", init);
