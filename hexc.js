@@ -172,7 +172,7 @@ function openNewWindow() {
 			height : 220,
 			width : 300,
 			url : 'index.html#'+(isNaN(dec) ? '' : dec),
-			type : 'popup',
+			// type : 'popup',
 		});
 	}
 	catch (error) {

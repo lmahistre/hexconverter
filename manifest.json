@@ -1,18 +1,18 @@
 {
 	"manifest_version": 2,
 	"name": "Hexconverter",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"author": "Lionel Mahistre",
 
-	"description": "Decimal, hexadecimal, binary and octal converter",
+	"description": "This addon instantly converts numbers from and to different formats : decimal, binary, octal and hexadecimal.",
 	"icons": {
-		"32": "hexc-32.png",
-		"48": "hexc-48.png",
-		"96": "hexc-96.png"
+		"32": "img/hexc-32.png",
+		"48": "img/hexc-48.png",
+		"96": "img/hexc-96.png"
 	},
 
 	"browser_action": {
-		"default_icon": "hexc-32.png",
+		"default_icon": "img/hexc-32.png",
 		"default_title": "Hexconverter",
 		"default_popup": "index.html"
 	}
