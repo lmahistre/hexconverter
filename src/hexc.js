@@ -169,10 +169,11 @@ function openNewWindow() {
 		var input = document.getElementById('decimal').value;
 		var dec = parseInt(input);
 		var creating = browser.windows.create({
-			height : 220,
-			width : 300,
+			height : 240,
+			width : 340,
 			url : 'index.html#'+(isNaN(dec) ? '' : dec),
 			// type : 'popup',
+			type : 'panel',
 		});
 	}
 	catch (error) {

@@ -4,10 +4,6 @@ body {
 	padding: 4px;
 	background-color: #EEE;
 }
-input {
-	width: 100%;
-	text-align: right;
-}
 table {
 	width: 100%;
 }
@@ -21,13 +17,15 @@ td.label {
 	text-align: left;
 }
 td.input input {
+	width: 100%;
+	text-align: right;
 	font-family: Helvetica, sans-serif, Arial;
 	font-size: 14px;
 	border-color: #DDD;
 	border-width: 1px;
 	border-style: solid;
 	border-radius: 4px;
-	padding: 2px;
+	padding: 2px 4px;
 }
 
 div.actions {
