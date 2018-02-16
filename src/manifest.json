@@ -1,10 +1,10 @@
 {
 	"manifest_version": 2,
 	"name": "Hexconverter",
-	"version": "1.2.1",
+	"version": "1.3.0",
 	"author": "Lionel Mahistre",
 
-	"description": "This addon instantly converts numbers from and to different formats : decimal, binary, octal and hexadecimal.",
+	"description": "This addon instantly converts numbers from and to different formats : decimal, binary, octal, hexadecimal and RGB formatted colors. ",
 	"icons": {
 		"32": "img/hexc-32.png",
 		"48": "img/hexc-48.png",

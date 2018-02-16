@@ -1,5 +1,0 @@
-- langues
-- formatage
-- boutons pour copier
-- copie avec / sans format
-- test unitaires
