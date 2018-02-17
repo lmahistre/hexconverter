@@ -213,7 +213,7 @@ function openNewWindow() {
 	try {
 		var hexadecimal = document.getElementById('hexadecimal').value;
 		var creating = browser.windows.create({
-			height : 240,
+			height : 260,
 			width : 340,
 			url : 'index.html#'+hexadecimal,
 			type : 'popup',
