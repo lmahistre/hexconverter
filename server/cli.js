@@ -35,6 +35,7 @@ exports.css = function(args) {
  * Compile JS
  */
 exports.js = function(args) {
+	config.js.mode = 'development';
 	compiler.js(config.js, function(error, success) {
 		if (success) {
 			console.log('JS successfully compiled');
@@ -55,6 +56,7 @@ exports.help = function(args) {
 }
 
 exports.build = function(args) {
+	config.js.mode = 'production';
 	compiler.js(config.js, function(error, success) {
 		if (success) {
 			console.log('JS successfully compiled');

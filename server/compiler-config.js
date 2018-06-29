@@ -1,11 +1,9 @@
 const path = require('path');
 const appDirName = path.resolve(__dirname+'/..');
 
-const resolve = relativePath => path.resolve(__dirname, '..', relativePath)
-
 module.exports = {
 	js : {
-		mode: 'development',
+		mode: 'development', // production
 		entry : appDirName+"/src/js/entry.js",
 		output : {
 			path : appDirName +'/build',
@@ -19,9 +17,10 @@ module.exports = {
 		outputFilename : 'hexc.css',
 	},
 	test : {
-		spec_dir: 'src/test',
+		spec_dir: 'tests',
 		spec_files: [
-			'test.js',
+			'converter.spec.js',
+			'compute.spec.js',
 		],
 		helpers: [],
 	},
