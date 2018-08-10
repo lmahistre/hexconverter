@@ -21,6 +21,7 @@ module.exports = {
 		spec_files: [
 			'converter.spec.js',
 			'compute.spec.js',
+			'validate.spec.js',
 		],
 		helpers: [],
 	},

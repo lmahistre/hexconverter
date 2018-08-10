@@ -23,6 +23,12 @@ describe ('converter', function() {
 		expect(converter.convertHexToDec('AE0')).toBe(2784);
 	});
 
+	it ('convertOctToDec', function() {
+		expect(converter.convertOctToDec('1')).toBe(1);
+		expect(converter.convertOctToDec('11')).toBe(9);
+		expect(converter.convertOctToDec('274')).toBe(188);
+	});
+
 	it ('convertDecToHex', function() {
 		expect(converter.convertDecToHex(10)).toBe('A');
 		expect(converter.convertDecToHex(1505)).toBe('5E1');
@@ -31,5 +37,11 @@ describe ('converter', function() {
 	it ('convertDecToOct', function() {
 		expect(converter.convertDecToOct(10)).toBe('12');
 		expect(converter.convertDecToOct(1505)).toBe('2741');
+	});
+
+	it ('convertDecTo256', function() {
+		expect(converter.convertDecTo256(10)).toBe('10');
+		expect(converter.convertDecTo256(1505)).toBe('5,225');
+		expect(converter.convertDecTo256(1235464)).toBe('18,218,8');
 	});
 });

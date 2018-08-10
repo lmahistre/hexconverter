@@ -41,6 +41,11 @@ const getRgbRValue = function() {
 }
 
 
+const getBase256Value = function() {
+	return document.getElementById('base256').value;
+}
+
+
 const updateFocus = function(event) {
 	if (event.which != 9 && event.which != 16) {
 		if (event.target.id == 'rgb_r' && document.getElementById('rgb_r').value.length >= 3) {

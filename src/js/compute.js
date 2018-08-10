@@ -1,11 +1,12 @@
 const converter = require('./converter.js');
+const validate = require('./validate.js');
 
 module.exports = function(input, type) {
 	var out = {};
 
 	// From decimal
 	if (type == 'decimal') {
-		var dec = converter.intval(input);
+		var dec = validate.decimal(input);
 		out.decimal = dec;
 		out.hexadecimal = converter.convertDecToHex(dec);
 		out.binary = converter.convertDecToBin(dec);
@@ -15,7 +16,8 @@ module.exports = function(input, type) {
 	// From hexadecimal
 	else if (type == 'hexadecimal') {
 		var hex = input.toUpperCase();
-		hex = hex.replace(/[^A-F0-9]/g, '');
+		hex = validate.hexadecimal(hex);
+		// hex = hex.replace(/[^A-F0-9]/g, '');
 		out.hexadecimal = hex;
 		out.decimal = converter.convertHexToDec(hex);
 		out.binary = converter.convertDecToBin(out.decimal);
@@ -42,20 +44,10 @@ module.exports = function(input, type) {
 
 	// From octal
 	else if (type == 'octal') {
-		var oct = input.replace(/[^0-7]/g, '');
-		out.octal = oct;
-
-		// To decimal
-		var dec = 0;
-		var exp = 1;
-		for (var i = oct.length - 1; i >= 0; i--) {
-			dec += exp*oct[i];
-			exp *= 8;
-		};
-		out.decimal = dec;
-
-		out.binary = converter.convertDecToBin(dec);
-		out.hexadecimal = converter.convertDecToHex(dec);
+		out.octal = input.replace(/[^0-7]/g, '');
+		out.decimal = converter.convertOctToDec(out.octal);
+		out.binary = converter.convertDecToBin(out.decimal);
+		out.hexadecimal = converter.convertDecToHex(out.decimal);
 	}
 	else if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
 		out.rgb_r = Math.min(converter.intval(document.getElementById('rgb_r').value), 255);
@@ -65,6 +57,14 @@ module.exports = function(input, type) {
 		out.decimal = converter.convertHexToDec(out.hexadecimal);
 		out.binary = converter.convertDecToBin(out.decimal);
 		out.octal = converter.convertDecToOct(out.decimal);
+		out.base256 = converter.convertDecTo256(out.decimal);
+	}
+	else if (type == 'base256') {
+		out.base256 = validate.base256(input);
+		out.decimal = converter.convert256ToDec(out.base256);
+		out.hexadecimal = converter.convertDecToHex(dec);
+		out.binary = converter.convertDecToBin(dec);
+		out.octal = converter.convertDecToOct(dec);
 	}
 	else {
 		return;

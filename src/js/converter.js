@@ -1,4 +1,5 @@
 
+// TO REMOVE
 exports.intval = function(val) {
 	let a = parseInt(val);
 	if (isNaN(a)) {
@@ -30,6 +31,29 @@ exports.convertHexToDec = function(hex) {
 	for (var i = 0; i < decValues.length; i++) {
 		dec += exp*decValues[i];
 		exp *=16;
+	};
+	return dec;
+}
+
+
+exports.convertOctToDec = function(oct) {
+	let dec = 0;
+	let exp = 1;
+	for (var i = oct.length - 1; i >= 0; i--) {
+		dec += exp*oct[i];
+		exp *= 8;
+	};
+	return dec;
+}
+
+
+exports.convert256ToDec = function(b256) {
+	const inp = b256.split(',');
+	let dec = 0;
+	let exp = 1;
+	for (var i = inp.length - 1; i >= 0; i--) {
+		dec += exp*inp[i];
+		exp *= 256;
 	};
 	return dec;
 }
@@ -77,11 +101,25 @@ exports.convertDecToHex = function(dec) {
 
 exports.convertDecToOct = function(dec) {
 	var oct = '';
-	decT = dec;
+	let decT = dec;
 	while (decT > 7) {
 		oct = (decT % 8) + oct;
 		decT = Math.floor(decT / 8);
 	}
 	oct = decT+oct;
 	return oct;
+}
+
+
+exports.convertDecTo256 = function(dec) {
+	let sb256  = '';
+	let ab256 = [];
+	let decT = dec;
+	while (decT > 255) {
+		sb256 = (decT % 256) + sb256;
+		decT = Math.floor(decT / 256);
+	}
+	ab256.push(decT);
+	sb256 = ab256.join(',');
+	return sb256;
 }
