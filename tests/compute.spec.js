@@ -12,6 +12,7 @@ describe('compute', function() {
 			rgb_r: 0,
 			rgb_g: 4,
 			rgb_b: 126,
+			base256 : '4,126',
 		});
 	});
 
@@ -26,6 +27,7 @@ describe('compute', function() {
 			rgb_r: 0,
 			rgb_g: 4,
 			rgb_b: 126,
+			base256 : '4,126',
 		});
 	});
 
@@ -40,6 +42,7 @@ describe('compute', function() {
 			rgb_r: 0,
 			rgb_g: 4,
 			rgb_b: 126,
+			base256 : '4,126',
 		});
 	});
 
@@ -54,6 +57,22 @@ describe('compute', function() {
 			rgb_r: 0,
 			rgb_g: 4,
 			rgb_b: 126,
+			base256 : '4,126',
+		});
+	});
+
+	it ('type base256', function() {
+		const c = compute('4,126', 'base256');
+		expect(c).toEqual({
+			decimal : 1150,
+			hexadecimal : '47E',
+			binary : '10001111110',
+			octal : '2176',
+			color: '00047E',
+			rgb_r: 0,
+			rgb_g: 4,
+			rgb_b: 126,
+			base256 : '4,126',
 		});
 	});
 });

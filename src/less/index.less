@@ -16,26 +16,28 @@ body {
 		width: 24px;
 		text-align: left;
 	}
-	td.input input {
-		width: 100%;
-		text-align: right;
-		font-family: Helvetica, sans-serif, Arial;
-		font-size: 14px;
-		border-color: #DDD;
-		border-width: 1px;
-		border-style: solid;
-		border-radius: 4px;
-		padding: 2px 4px;
-		display: block;
-	}
-	td.input div.input-container {
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	td.input div.input-container input.small {
-		width: 26%;
+	td.input {
+		input {
+			width: 100%;
+			text-align: right;
+			font-family: Helvetica, sans-serif, Arial;
+			font-size: 14px;
+			border-color: #DDD;
+			border-width: 1px;
+			border-style: solid;
+			border-radius: 4px;
+			padding: 2px 4px;
+			display: block;
+		}
+		div.input-container {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+		div.input-container input.small {
+			width: 26%;
+		}
 	}
 	@media (min-width: 240px) {
 		td.input div.input-container input.small {
@@ -64,17 +66,19 @@ body {
 
 	div.actions {
 		margin-top: 0.6em;
-	}
-	div.actions a.action {
-		padding: 0px 8px;
-		text-decoration: none;
-		color: #000;
-		outline: none;
-		float: right;
-	}
-	div.actions a.action img {
-		height: 18px;
-		width: 18px;
+
+		a.action {
+			padding: 0px 8px;
+			text-decoration: none;
+			color: #000;
+			outline: none;
+			float: right;
+
+			img {
+				height: 18px;
+				width: 18px;
+			}
+		}
 	}
 
 	div.color-indicator {

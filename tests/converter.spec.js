@@ -8,6 +8,7 @@ describe ('converter', function() {
 
 	it ('convertDecToBin', function() {
 		expect(converter.convertDecToBin(10)).toBe('1010');
+		expect(converter.convertDecToBin(1235464)).toBe('100101101101000001000');
 	});
 
 	it ('intval', function() {
@@ -43,5 +44,10 @@ describe ('converter', function() {
 		expect(converter.convertDecTo256(10)).toBe('10');
 		expect(converter.convertDecTo256(1505)).toBe('5,225');
 		expect(converter.convertDecTo256(1235464)).toBe('18,218,8');
+	});
+
+	it ('convertBinToDec', function() {
+		expect(converter.convertBinToDec('1010')).toBe(10);
+		expect(converter.convertBinToDec('100101101101000001000')).toBe(1235464);
 	});
 });

@@ -9,6 +9,17 @@ exports.intval = function(val) {
 }
 
 
+exports.convertBinToDec = function(bin) {
+	let dec = 0;
+	let exp = 1;
+	for (var i = bin.length - 1; i >= 0; i--) {
+		dec += exp*bin[i];
+		exp *= 2;
+	};
+	return dec;
+}
+
+
 exports.convertHexToDec = function(hex) {
 	var htd = {
 		'A' : 10,
@@ -115,11 +126,12 @@ exports.convertDecTo256 = function(dec) {
 	let sb256  = '';
 	let ab256 = [];
 	let decT = dec;
-	while (decT > 255) {
-		sb256 = (decT % 256) + sb256;
+	while (decT > 0) {
+		ab256.unshift(decT % 256);
+		// sb256 = (decT % 256) + sb256;
 		decT = Math.floor(decT / 256);
 	}
-	ab256.push(decT);
+	// ab256.push(decT % 256);
 	sb256 = ab256.join(',');
 	return sb256;
 }

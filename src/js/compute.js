@@ -6,48 +6,41 @@ module.exports = function(input, type) {
 
 	// From decimal
 	if (type == 'decimal') {
-		var dec = validate.decimal(input);
-		out.decimal = dec;
-		out.hexadecimal = converter.convertDecToHex(dec);
-		out.binary = converter.convertDecToBin(dec);
-		out.octal = converter.convertDecToOct(dec);
+		out.decimal = validate.decimal(input);
+		out.hexadecimal = converter.convertDecToHex(out.decimal);
+		out.binary = converter.convertDecToBin(out.decimal);
+		out.octal = converter.convertDecToOct(out.decimal);
+		out.base256 = converter.convertDecTo256(out.decimal);
 	}
 
 	// From hexadecimal
 	else if (type == 'hexadecimal') {
 		var hex = input.toUpperCase();
 		hex = validate.hexadecimal(hex);
-		// hex = hex.replace(/[^A-F0-9]/g, '');
 		out.hexadecimal = hex;
 		out.decimal = converter.convertHexToDec(hex);
 		out.binary = converter.convertDecToBin(out.decimal);
 		out.octal = converter.convertDecToOct(out.decimal);
+		out.base256 = converter.convertDecTo256(out.decimal);
 	}
 
 	// From binary
 	else if (type == 'binary') {
-		var bin = input.replace(/[^01]/g, '');
-		out.binary = bin;
-
-		// To decimal
-		var dec = 0;
-		var exp = 1;
-		for (var i = bin.length - 1; i >= 0; i--) {
-			dec += exp*bin[i];
-			exp *= 2;
-		};
-		out.decimal = dec;
-
-		out.hexadecimal = converter.convertDecToHex(dec);
-		out.octal = converter.convertDecToOct(dec);
+		out.binary = validate.binary(input);
+		out.decimal = converter.convertBinToDec(out.binary);
+		out.hexadecimal = converter.convertDecToHex(out.decimal);
+		out.octal = converter.convertDecToOct(out.decimal);
+		out.base256 = converter.convertDecTo256(out.decimal);
 	}
 
 	// From octal
 	else if (type == 'octal') {
-		out.octal = input.replace(/[^0-7]/g, '');
+		// out.octal = input.replace(/[^0-7]/g, '');
+		out.octal = validate.octal(input);
 		out.decimal = converter.convertOctToDec(out.octal);
 		out.binary = converter.convertDecToBin(out.decimal);
 		out.hexadecimal = converter.convertDecToHex(out.decimal);
+		out.base256 = converter.convertDecTo256(out.decimal);
 	}
 	else if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
 		out.rgb_r = Math.min(converter.intval(document.getElementById('rgb_r').value), 255);
@@ -62,9 +55,9 @@ module.exports = function(input, type) {
 	else if (type == 'base256') {
 		out.base256 = validate.base256(input);
 		out.decimal = converter.convert256ToDec(out.base256);
-		out.hexadecimal = converter.convertDecToHex(dec);
-		out.binary = converter.convertDecToBin(dec);
-		out.octal = converter.convertDecToOct(dec);
+		out.hexadecimal = converter.convertDecToHex(out.decimal);
+		out.binary = converter.convertDecToBin(out.decimal);
+		out.octal = converter.convertDecToOct(out.decimal);
 	}
 	else {
 		return;
