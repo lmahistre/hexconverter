@@ -77,7 +77,7 @@ body div.clearfix {
     width: 27%;
   }
 }
-@media (min-width: 320px) {
+@media (min-width: 360px) {
   body {
     max-width: none;
   }
