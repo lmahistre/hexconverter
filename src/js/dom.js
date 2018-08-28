@@ -91,7 +91,7 @@ const setValues = function(out) {
 
 
 const isToolbar = function() {
-	return typeof browser !== 'undefined' ? true : false;
+	return location.href.indexOf('#') === -1 && typeof browser !== 'undefined';
 }
 
 
