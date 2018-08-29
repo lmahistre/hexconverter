@@ -8,18 +8,19 @@
   },
   "scripts": {
     "test": "node build.js test",
-    "build": "node build.js build"
+    "build": "node build.js build",
+    "build:css": "node build.js css"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lmahistre/hexconverter.git"
   },
-  "author": "",
+  "author": "Lionel Mahistre",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/lmahistre/hexconverter/issues"
   },
-  "homepage": "https://github.com/lmahistre/hexconverter#readme",
+  "homepage": "https://addons.mozilla.org/firefox/addon/hexconverter",
   "devDependencies": {
     "jasmine": "^3.1.0",
     "less": "^3.0.4",
