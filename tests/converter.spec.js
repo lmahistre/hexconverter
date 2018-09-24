@@ -11,13 +11,6 @@ describe ('converter', function() {
 		expect(converter.convertDecToBin(1235464)).toBe('100101101101000001000');
 	});
 
-	it ('intval', function() {
-		expect(converter.intval('15')).toBe(15);
-		expect(converter.intval('14.4')).toBe(14);
-		expect(converter.intval('f')).toBe(0);
-		expect(converter.intval('')).toBe(0);
-	});
-
 	it ('convertHexToDec', function() {
 		expect(converter.convertHexToDec('1')).toBe(1);
 		expect(converter.convertHexToDec('11')).toBe(17);

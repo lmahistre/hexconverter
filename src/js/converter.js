@@ -1,14 +1,4 @@
 
-// TO REMOVE
-exports.intval = function(val) {
-	let a = parseInt(val);
-	if (isNaN(a)) {
-		a = 0;
-	}
-	return a;
-}
-
-
 exports.convertBinToDec = function(bin) {
 	let dec = 0;
 	let exp = 1;

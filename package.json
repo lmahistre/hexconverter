@@ -9,7 +9,9 @@
   "scripts": {
     "test": "node build.js test",
     "build": "node build.js build",
-    "build:css": "node build.js css"
+    "js": "node build.js js",
+    "css": "node build.js css",
+    "start": "node build.js start"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "homepage": "https://addons.mozilla.org/firefox/addon/hexconverter",
   "devDependencies": {
+    "express": "^4.16.3",
     "jasmine": "^3.1.0",
     "less": "^3.0.4",
     "webpack": "^4.12.1"

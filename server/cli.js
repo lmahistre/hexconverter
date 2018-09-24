@@ -35,7 +35,8 @@ exports.css = function(args) {
  * Compile JS
  */
 exports.js = function(args) {
-	config.js.mode = 'development';
+	// config.js.mode = 'development';
+	config.js.optimization.minimize = false;
 	compiler.js(config.js, function(error, success) {
 		if (success) {
 			console.log('JS successfully compiled');
@@ -56,7 +57,8 @@ exports.help = function(args) {
 }
 
 exports.build = function(args) {
-	config.js.mode = 'production';
+	// config.js.mode = 'production';
+	config.js.optimization.minimize = true;
 	compiler.js(config.js, function(error, success) {
 		if (success) {
 			console.log('JS successfully compiled');
@@ -74,6 +76,11 @@ exports.build = function(args) {
 			exports.test();
 		});
 	});
+}
+
+
+exports.start = function(args) {
+	require('./server.js')();
 }
 
 
