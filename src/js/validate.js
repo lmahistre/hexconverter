@@ -1,3 +1,4 @@
+const tools = require('./tools.js');
 
 exports.decimal = function(inp) {
 	let a = parseInt(inp);
@@ -32,3 +33,6 @@ exports.base256 = function(inp) {
 	}
 	return ab256.join(',');
 }
+
+
+exports.rgb = tools.intval;

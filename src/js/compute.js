@@ -1,5 +1,6 @@
 const converter = require('./converter.js');
 const validate = require('./validate.js');
+// const dom = require('./dom.js');
 
 module.exports = function(input, type) {
 	var out = {};
@@ -43,9 +44,15 @@ module.exports = function(input, type) {
 		out.base256 = converter.convertDecTo256(out.decimal);
 	}
 	else if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
-		out.rgb_r = Math.min(converter.intval(document.getElementById('rgb_r').value), 255);
-		out.rgb_g = Math.min(converter.intval(document.getElementById('rgb_g').value), 255);
-		out.rgb_b = Math.min(converter.intval(document.getElementById('rgb_b').value), 255);
+		if (type == 'rgb_r') {
+			out.rgb_r = Math.min(validate.rgb(input), 255);
+		}
+		if (type == 'rgb_g') {
+			out.rgb_g = Math.min(validate.rgb(input), 255);
+		}
+		if (type == 'rgb_b') {
+			out.rgb_b = Math.min(validate.rgb(input), 255);
+		}
 		out.hexadecimal = converter.convertDecToHex(out.rgb_r).padStart(2,'0') + converter.convertDecToHex(out.rgb_g).padStart(2,'0') + converter.convertDecToHex(out.rgb_b).padStart(2,'0');
 		out.decimal = converter.convertHexToDec(out.hexadecimal);
 		out.binary = converter.convertDecToBin(out.decimal);
@@ -65,9 +72,15 @@ module.exports = function(input, type) {
 
 	// Color
 	if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
-		out.rgb_r = Math.min(converter.intval(document.getElementById('rgb_r').value), 255);
-		out.rgb_g = Math.min(converter.intval(document.getElementById('rgb_g').value), 255);
-		out.rgb_b = Math.min(converter.intval(document.getElementById('rgb_b').value), 255);
+		if (type == 'rgb_r') {
+			out.rgb_r = Math.min(validate.rgb(input), 255);
+		}
+		if (type == 'rgb_g') {
+			out.rgb_g = Math.min(validate.rgb(input), 255);
+		}
+		if (type == 'rgb_b') {
+			out.rgb_b = Math.min(validate.rgb(input), 255);
+		}
 		out.hexadecimal = converter.convertDecToHex(out.rgb_r).padStart(2,'0') + converter.convertDecToHex(out.rgb_g).padStart(2,'0') + converter.convertDecToHex(out.rgb_b).padStart(2,'0');
 		out.color = out.hexadecimal.padStart(6,'0');
 	}

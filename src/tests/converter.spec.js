@@ -1,10 +1,6 @@
-const converter = require('../src/js/converter.js');
+const converter = require('../js/converter.js');
 
 describe ('converter', function() {
-	it ('decToHex', function() {
-		expect(converter.decToHex(0)).toBe(0);
-		expect(converter.decToHex(10)).toBe('A');
-	});
 
 	it ('convertDecToBin', function() {
 		expect(converter.convertDecToBin(10)).toBe('1010');

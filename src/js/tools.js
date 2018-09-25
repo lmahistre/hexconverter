@@ -60,3 +60,21 @@ exports.toBin = function(dec) {
 	bin = inp+bin;
 	return bin;
 }
+
+
+exports.decToHex = function(val) {
+	var chars = {
+		10 : 'A',
+		11 : 'B',
+		12 : 'C',
+		13 : 'D',
+		14 : 'E',
+		15 : 'F',
+	};
+	if (val < 10) {
+		return val;
+	}
+	else {
+		return chars[val];
+	}
+}

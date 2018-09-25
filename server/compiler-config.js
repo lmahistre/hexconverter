@@ -20,7 +20,7 @@ module.exports = {
 		outputFilename : 'hexc.css',
 	},
 	test : {
-		spec_dir: 'tests',
+		spec_dir: 'src/tests',
 		spec_files: [
 			'compute.spec.js',
 			'converter.spec.js',

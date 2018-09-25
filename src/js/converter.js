@@ -1,3 +1,4 @@
+const tools = require('./tools.js');
 
 exports.convertBinToDec = function(bin) {
 	let dec = 0;
@@ -60,31 +61,25 @@ exports.convert256ToDec = function(b256) {
 }
 
 
-exports.decToHex = function(val) {
-	var chars = {
-		10 : 'A',
-		11 : 'B',
-		12 : 'C',
-		13 : 'D',
-		14 : 'E',
-		15 : 'F',
-	};
-	if (val < 10) {
-		return val;
-	}
-	else {
-		return chars[val];
-	}
-}
+// exports.convertDecToBin = function(dec) {
+// 	var bin = '';
+// 	while (dec > 1) {
+// 		bin = (dec % 2) + bin;
+// 		dec = Math.floor(dec / 2);
+// 	}
+// 	bin = dec+bin;
+// 	return bin;
+// }
 
 
 exports.convertDecToBin = function(dec) {
-	var bin = '';
-	while (dec > 1) {
-		bin = (dec % 2) + bin;
-		dec = Math.floor(dec / 2);
+	let inp = ''+dec;
+	let bin = '';
+	while (tools.higherThan1(inp)) {
+		bin = (tools.modulo2(inp)) + bin;
+		inp = tools.divBy2(inp);
 	}
-	bin = dec+bin;
+	bin = inp+bin;
 	return bin;
 }
 
@@ -92,10 +87,10 @@ exports.convertDecToBin = function(dec) {
 exports.convertDecToHex = function(dec) {
 	var hex = '';
 	while (dec > 15) {
-		hex = exports.decToHex(dec % 16)+hex;
+		hex = tools.decToHex(dec % 16)+hex;
 		dec = Math.floor(dec / 16);
 	}
-	hex = exports.decToHex(dec)+hex;
+	hex = tools.decToHex(dec)+hex;
 	return hex;
 }
 

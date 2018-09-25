@@ -1,4 +1,4 @@
-const compute = require('../src/js/compute.js');
+const compute = require('../js/compute.js');
 
 describe('compute', function() {
 	it ('type decimal', function() {

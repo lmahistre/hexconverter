@@ -32,6 +32,10 @@ Pour construire les fichiers Javascript et CSS et lancer les tests unitaires :
 
 `npm run build`
 
+Pour créer les archives qui contiennent le code de l'addon et le code source :
+
+`npm run publish`
+
 Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers générés sont dans le dossier `build`. Il y a 2 fichiers générés : `hexc.js` et `hexc.css`.
 
 Le package pour l'addon est fait à partir du dosser `build`, il contient les fichiers statiques, le manifest et l'HTML.

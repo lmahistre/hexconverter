@@ -1,4 +1,4 @@
-const tools = require('../src/js/tools.js');
+const tools = require('../js/tools.js');
 
 describe('tools', function() {
 	it ('intval', function() {
@@ -36,5 +36,10 @@ describe('tools', function() {
 		expect(tools.toBin(10)).toBe('1010');
 		expect(tools.toBin(1235464)).toBe('100101101101000001000');
 		expect(tools.toBin('72131313615431548131854542897')).toBe('111010010001000110011111110010100100110111100000011110011111110001000100100010000110100000110001');
+	});
+
+	it ('decToHex', function() {
+		expect(tools.decToHex(0)).toBe(0);
+		expect(tools.decToHex(10)).toBe('A');
 	});
 });

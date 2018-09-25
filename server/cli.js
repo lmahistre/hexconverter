@@ -84,4 +84,12 @@ exports.start = function(args) {
 }
 
 
+exports.publish = function(args) {
+	const zip = require('./zip.js');
+	zip.addon(function() {
+		zip.source();
+	});
+}
+
+
 exports['--help'] = exports['-h'] = exports.help;
