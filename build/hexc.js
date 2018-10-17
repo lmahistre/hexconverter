@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -174,7 +174,7 @@ exports.decToHex = function(val) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-const colorsByCode = __webpack_require__(6);
+const colorsByCode = __webpack_require__(7);
 
 const updateColor = function(colorCode) {
 	let colorName = '';
@@ -289,6 +289,12 @@ module.exports = {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 const tools = __webpack_require__(0);
 
 exports.decimal = function(inp) {
@@ -329,7 +335,7 @@ exports.base256 = function(inp) {
 exports.rgb = tools.intval;
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const tools = __webpack_require__(0);
@@ -456,11 +462,11 @@ exports.convertDecTo256 = function(dec) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const converter = __webpack_require__(3);
-const validate = __webpack_require__(2);
+const converter = __webpack_require__(4);
+const validate = __webpack_require__(3);
 // const dom = require('./dom.js');
 
 module.exports = function(input, type) {
@@ -514,8 +520,6 @@ module.exports = function(input, type) {
 		if (type == 'rgb_b') {
 			out.rgb_b = Math.min(validate.rgb(input), 255);
 		}
-		// out.rgb_g = Math.min(converter.intval(document.getElementById('rgb_g').value), 255);
-		// out.rgb_b = Math.min(converter.intval(document.getElementById('rgb_b').value), 255);
 		out.hexadecimal = converter.convertDecToHex(out.rgb_r).padStart(2,'0') + converter.convertDecToHex(out.rgb_g).padStart(2,'0') + converter.convertDecToHex(out.rgb_b).padStart(2,'0');
 		out.decimal = converter.convertHexToDec(out.hexadecimal);
 		out.binary = converter.convertDecToBin(out.decimal);
@@ -535,9 +539,15 @@ module.exports = function(input, type) {
 
 	// Color
 	if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
-		out.rgb_r = Math.min(converter.intval(document.getElementById('rgb_r').value), 255);
-		out.rgb_g = Math.min(converter.intval(document.getElementById('rgb_g').value), 255);
-		out.rgb_b = Math.min(converter.intval(document.getElementById('rgb_b').value), 255);
+		if (type == 'rgb_r') {
+			out.rgb_r = Math.min(validate.rgb(input), 255);
+		}
+		if (type == 'rgb_g') {
+			out.rgb_g = Math.min(validate.rgb(input), 255);
+		}
+		if (type == 'rgb_b') {
+			out.rgb_b = Math.min(validate.rgb(input), 255);
+		}
 		out.hexadecimal = converter.convertDecToHex(out.rgb_r).padStart(2,'0') + converter.convertDecToHex(out.rgb_g).padStart(2,'0') + converter.convertDecToHex(out.rgb_b).padStart(2,'0');
 		out.color = out.hexadecimal.padStart(6,'0');
 	}
@@ -561,11 +571,11 @@ module.exports = function(input, type) {
 }
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const dom = __webpack_require__(1);
-const compute = __webpack_require__(4);
+const compute = __webpack_require__(5);
 
 exports.openNewWindow = function(event) {
 	try {
@@ -598,7 +608,7 @@ exports.onChange = function(event) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -745,11 +755,11 @@ module.exports = {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const dom = __webpack_require__(1);
-const events = __webpack_require__(5);
+const events = __webpack_require__(6);
 
 dom.setDOMContentLoadedEvent(function() {
 	dom.setKeyUp(events.onChange);
@@ -764,6 +774,14 @@ dom.setDOMContentLoadedEvent(function() {
 		dom.removeActionsBlock();
 	}
 });
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(8);
+module.exports = __webpack_require__(2);
+
 
 /***/ })
 /******/ ]);

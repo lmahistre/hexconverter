@@ -1,12 +1,11 @@
 const webpack = require('webpack');
 const fs = require('fs');
-const less = require('less');
 
 
 /**
  * Bundles JS and JSX into one single file
  */
-exports.js = function(configJs, callback) {
+exports.webpack = function(configJs, callback) {
 	const webpackCompiler = webpack(configJs);
 	try {
 		webpackCompiler.run(function(err, stats) {
@@ -28,7 +27,6 @@ exports.js = function(configJs, callback) {
 				}
 			}
 			catch (error) {
-
 				if (callback && typeof callback === 'function') {
 					callback(error);
 				}
@@ -38,61 +36,6 @@ exports.js = function(configJs, callback) {
 	catch (error) {
 		if (callback && typeof callback === 'function') {
 			callback(error);
-		}
-	}
-};
-
-
-/**
- * Compiles LESS files into CSS
- */
-exports.css =  function(configCss, callback) {
-
-	try {
-		fs.readFile(configCss.inputFolder+'/'+configCss.inputFilename, { 
-			encoding: 'utf8' 
-		}, 
-		function(err, data) {
-			if (err) {
-				if (callback && typeof callback === 'function') {
-					callback(err);
-				}
-			}
-			less.render(data, {
-				paths: [configCss.inputFolder+'/'], // Specify search paths for @import directives
-				filename: './'+configCss.inputFilename,
-				compress: false // Minify CSS output
-			},
-			function (e, output) {
-				if (e) {
-					if (callback && typeof callback === 'function') {
-						callback(e);
-					}
-				}
-				else {
-					fs.writeFile(configCss.outputFolder+'/'+configCss.outputFilename, output.css, {
-						flag:'w+', 
-						encoding:'utf8'
-					},
-					function(err) {
-						if (err) {
-							if (callback && typeof callback === 'function') {
-								callback(err);
-							}
-						}
-						else {
-							if (callback && typeof callback === 'function') {
-								callback(null, true);
-							}
-						}
-					});
-				}
-			});
-		});
-	}
-	catch(err) {
-		if (callback && typeof callback === 'function') {
-			callback(err);
 		}
 	}
 };

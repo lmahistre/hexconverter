@@ -18,13 +18,9 @@ First, install dependencies:
 
 `npm install`
 
-To compile Javascript file for development:
+To compile Javascript and CSS files:
 
-`npm run js`
-
-To build CSS file:
-
-`npm run js`
+`npm run dev`
 
 To launch unit tests:
 

@@ -16,13 +16,9 @@ Installer d'abord les dépendances:
 
 `npm install`
 
-Pour compiler le fichier Javascript pour le développement :
+Pour compiler les fichiers Javascript et CSS :
 
-`npm run js`
-
-Pour construire le fichier CSS :
-
-`npm run js`
+`npm run dev`
 
 Pour lancer les tests unitaires :
 

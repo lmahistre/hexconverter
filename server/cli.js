@@ -19,27 +19,10 @@ exports.test = function(args) {
 }
 
 
-exports.css = function(args) {
-	compiler.css(config.css, function(error, success) {
+exports.dev = function(args) {
+	compiler.webpack(config.webpack, function(error, success) {
 		if (success) {
-			console.log('CSS successfully compiled');
-		}
-		else {
-			console.log(error);
-		}
-	});
-}
-
-
-/**
- * Compile JS
- */
-exports.js = function(args) {
-	// config.js.mode = 'development';
-	config.js.optimization.minimize = false;
-	compiler.js(config.js, function(error, success) {
-		if (success) {
-			console.log('JS successfully compiled');
+			console.log('Successfully compiled');
 		}
 		else {
 			console.log(error);
@@ -56,25 +39,16 @@ exports.help = function(args) {
 	}
 }
 
+
 exports.build = function(args) {
-	// config.js.mode = 'production';
-	config.js.optimization.minimize = true;
-	compiler.js(config.js, function(error, success) {
+	compiler.webpack(config.webpack, function(error, success) {
 		if (success) {
-			console.log('JS successfully compiled');
+			console.log('Successfully compiled');
 		}
 		else {
 			console.log(error);
 		}
-		compiler.css(config.css, function(error, success) {
-			if (success) {
-				console.log('CSS successfully compiled');
-			}
-			else {
-				console.log(error);
-			}
-			exports.test();
-		});
+		exports.test();
 	});
 }
 
