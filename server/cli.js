@@ -1,6 +1,7 @@
 
 const config = require('./compiler-config.js');
 const compiler = require('./compiler.js');
+const chalk = require('chalk');
 
 exports.test = function(args) {
 	const Jasmine = require('jasmine');
@@ -9,10 +10,10 @@ exports.test = function(args) {
 	jasmine.onComplete(function(passed) {
 		console.log(' --- ')
 		if(passed) {
-			console.log('All tests pass');
+			console.log(chalk.green('All tests pass'));
 		}
 		else {
-			console.log('At least one test failed');
+			console.log(chalk.red('At least one test failed'));
 		}
 	});
 	jasmine.execute();
@@ -22,10 +23,10 @@ exports.test = function(args) {
 exports.dev = function(args) {
 	compiler.webpack(config.webpack, function(error, success) {
 		if (success) {
-			console.log('Successfully compiled');
+			console.log(chalk.green('Successfully compiled'));
 		}
 		else {
-			console.log(error);
+			console.log(chalk.red(error));
 		}
 	});
 }
@@ -65,5 +66,16 @@ exports.publish = function(args) {
 	});
 }
 
+
+exports.watch = function(args) {
+	const watch = require('node-watch');
+	console.log('Watching src');
+	watch('./src', { 
+		recursive: true 
+	}, function(evt, name) {
+		console.log('%s changed.', name);
+		exports.build();
+	});
+}
 
 exports['--help'] = exports['-h'] = exports.help;
