@@ -30,6 +30,11 @@ exports.divBy2 = function(dec) {
 }
 
 
+exports.multiplyBy2 = function(dec) {
+
+}
+
+
 exports.filter0 = function(str) {
 	while (str.charAt(0) === '0') {
 		str = str.substr(1);
@@ -72,9 +77,57 @@ exports.decToHex = function(val) {
 		15 : 'F',
 	};
 	if (val < 10) {
-		return val;
+		return ''+val;
 	}
 	else {
 		return chars[val];
 	}
+}
+
+
+exports.hexToDec = function(hex) {
+	var htd = {
+		'A' : 10,
+		'B' : 11,
+		'C' : 12,
+		'D' : 13,
+		'E' : 14,
+		'F' : 15,
+	};
+	for (var i = 0; i < 10; i++) {
+		htd[''+i] = i;
+	};
+	return htd[hex];
+}
+
+
+exports.decToBin = function(dec) {
+	let inp = ''+dec;
+	let bin = '';
+	while (exports.higherThan1(inp)) {
+		bin = (exports.modulo2(inp)) + bin;
+		inp = exports.divBy2(inp);
+	}
+	bin = inp+bin;
+	return bin;
+}
+
+
+exports.binToDec = function(bin) {
+	let dec = 0;
+	let exp = 1;
+	for (var i = bin.length - 1; i >= 0; i--) {
+		dec += exp*bin[i];
+		exp *= 2;
+	};
+	return dec;
+}
+
+
+exports.binToHex = function(bin) {
+	return ''+exports.decToHex(exports.binToDec(bin));
+}
+
+exports.hexToBin = function(hex) {
+	return (''+exports.decToBin(exports.hexToDec(hex))).padStart(4, '0');
 }

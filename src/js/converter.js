@@ -1,13 +1,45 @@
 const tools = require('./tools.js');
 
-exports.convertBinToDec = function(bin) {
-	let dec = 0;
-	let exp = 1;
-	for (var i = bin.length - 1; i >= 0; i--) {
-		dec += exp*bin[i];
-		exp *= 2;
-	};
-	return dec;
+
+exports.convertBinToOct = function(bin) {
+	let tb = bin;
+	let outArray = [];
+	while (tb.length > 0) {
+		outArray.unshift(tools.binToHex((tb.slice(-3))));
+		tb = tb.slice(0, -3);
+	}
+	return outArray.join('');
+}
+
+
+exports.convertBinToHex = function(bin) {
+	let tb = bin;
+	let outArray = [];
+	while (tb.length > 0) {
+		outArray.unshift(tools.binToHex((tb.slice(-4))));
+		tb = tb.slice(0, -4);
+	}
+	return outArray.join('');
+}
+
+
+exports.convertHexToBin = function(hex) {
+	let bin = '';
+	for (let i=0; i<hex.length; i++) {
+		bin += tools.hexToBin(hex[i]);
+	}
+	return bin;
+}
+
+
+exports.convertBinTo256 = function(bin) {
+	let tb = bin;
+	let outArray = [];
+	while (tb.length > 0) {
+		outArray.unshift(tools.binToDec((tb.slice(-8))));
+		tb = tb.slice(0, -8);
+	}
+	return outArray.join(',');
 }
 
 
@@ -49,6 +81,7 @@ exports.convertOctToDec = function(oct) {
 }
 
 
+// DEPRECATED
 exports.convert256ToDec = function(b256) {
 	const inp = b256.split(',');
 	let dec = 0;
@@ -61,17 +94,6 @@ exports.convert256ToDec = function(b256) {
 }
 
 
-// exports.convertDecToBin = function(dec) {
-// 	var bin = '';
-// 	while (dec > 1) {
-// 		bin = (dec % 2) + bin;
-// 		dec = Math.floor(dec / 2);
-// 	}
-// 	bin = dec+bin;
-// 	return bin;
-// }
-
-
 exports.convertDecToBin = function(dec) {
 	let inp = ''+dec;
 	let bin = '';
@@ -81,6 +103,17 @@ exports.convertDecToBin = function(dec) {
 	}
 	bin = inp+bin;
 	return bin;
+}
+
+
+exports.convertBinToDec = function(bin) {
+	let dec = '';
+	let exp = 1;
+	for (var i = bin.length - 1; i >= 0; i--) {
+		dec += exp*bin[i];
+		exp *= 2;
+	};
+	return dec;
 }
 
 
@@ -96,7 +129,7 @@ exports.convertDecToHex = function(dec) {
 
 
 exports.convertDecToOct = function(dec) {
-	var oct = '';
+	let oct = '';
 	let decT = dec;
 	while (decT > 7) {
 		oct = (decT % 8) + oct;
@@ -113,10 +146,8 @@ exports.convertDecTo256 = function(dec) {
 	let decT = dec;
 	while (decT > 0) {
 		ab256.unshift(decT % 256);
-		// sb256 = (decT % 256) + sb256;
 		decT = Math.floor(decT / 256);
 	}
-	// ab256.push(decT % 256);
 	sb256 = ab256.join(',');
 	return sb256;
 }

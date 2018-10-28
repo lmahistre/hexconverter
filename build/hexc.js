@@ -120,6 +120,11 @@ exports.divBy2 = function(dec) {
 }
 
 
+exports.multiplyBy2 = function(dec) {
+
+}
+
+
 exports.filter0 = function(str) {
 	while (str.charAt(0) === '0') {
 		str = str.substr(1);
@@ -162,11 +167,59 @@ exports.decToHex = function(val) {
 		15 : 'F',
 	};
 	if (val < 10) {
-		return val;
+		return ''+val;
 	}
 	else {
 		return chars[val];
 	}
+}
+
+
+exports.hexToDec = function(hex) {
+	var htd = {
+		'A' : 10,
+		'B' : 11,
+		'C' : 12,
+		'D' : 13,
+		'E' : 14,
+		'F' : 15,
+	};
+	for (var i = 0; i < 10; i++) {
+		htd[''+i] = i;
+	};
+	return htd[hex];
+}
+
+
+exports.decToBin = function(dec) {
+	let inp = ''+dec;
+	let bin = '';
+	while (exports.higherThan1(inp)) {
+		bin = (exports.modulo2(inp)) + bin;
+		inp = exports.divBy2(inp);
+	}
+	bin = inp+bin;
+	return bin;
+}
+
+
+exports.binToDec = function(bin) {
+	let dec = 0;
+	let exp = 1;
+	for (var i = bin.length - 1; i >= 0; i--) {
+		dec += exp*bin[i];
+		exp *= 2;
+	};
+	return dec;
+}
+
+
+exports.binToHex = function(bin) {
+	return ''+exports.decToHex(exports.binToDec(bin));
+}
+
+exports.hexToBin = function(hex) {
+	return (''+exports.decToBin(exports.hexToDec(hex))).padStart(4, '0');
 }
 
 /***/ }),
@@ -298,12 +351,7 @@ module.exports = {
 const tools = __webpack_require__(0);
 
 exports.decimal = function(inp) {
-	let a = parseInt(inp);
-	if (isNaN(a)) {
-		a = 0;
-	}
-	a = Math.max(0, a);
-	return a;
+	return (''+inp).replace(/[^0-9]/g, '');
 }
 
 
@@ -315,6 +363,7 @@ exports.octal = function(inp) {
 exports.hexadecimal = function(inp) {
 	return inp.replace(/[^A-F0-9]/g, '');
 }
+
 
 exports.binary = function(input) {
 	return input.replace(/[^01]/g, '');
@@ -332,22 +381,52 @@ exports.base256 = function(inp) {
 }
 
 
-exports.rgb = tools.intval;
-
 /***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const tools = __webpack_require__(0);
 
-exports.convertBinToDec = function(bin) {
-	let dec = 0;
-	let exp = 1;
-	for (var i = bin.length - 1; i >= 0; i--) {
-		dec += exp*bin[i];
-		exp *= 2;
-	};
-	return dec;
+
+exports.convertBinToOct = function(bin) {
+	let tb = bin;
+	let outArray = [];
+	while (tb.length > 0) {
+		outArray.unshift(tools.binToHex((tb.slice(-3))));
+		tb = tb.slice(0, -3);
+	}
+	return outArray.join('');
+}
+
+
+exports.convertBinToHex = function(bin) {
+	let tb = bin;
+	let outArray = [];
+	while (tb.length > 0) {
+		outArray.unshift(tools.binToHex((tb.slice(-4))));
+		tb = tb.slice(0, -4);
+	}
+	return outArray.join('');
+}
+
+
+exports.convertHexToBin = function(hex) {
+	let bin = '';
+	for (let i=0; i<hex.length; i++) {
+		bin += tools.hexToBin(hex[i]);
+	}
+	return bin;
+}
+
+
+exports.convertBinTo256 = function(bin) {
+	let tb = bin;
+	let outArray = [];
+	while (tb.length > 0) {
+		outArray.unshift(tools.binToDec((tb.slice(-8))));
+		tb = tb.slice(0, -8);
+	}
+	return outArray.join(',');
 }
 
 
@@ -389,6 +468,7 @@ exports.convertOctToDec = function(oct) {
 }
 
 
+// DEPRECATED
 exports.convert256ToDec = function(b256) {
 	const inp = b256.split(',');
 	let dec = 0;
@@ -401,17 +481,6 @@ exports.convert256ToDec = function(b256) {
 }
 
 
-// exports.convertDecToBin = function(dec) {
-// 	var bin = '';
-// 	while (dec > 1) {
-// 		bin = (dec % 2) + bin;
-// 		dec = Math.floor(dec / 2);
-// 	}
-// 	bin = dec+bin;
-// 	return bin;
-// }
-
-
 exports.convertDecToBin = function(dec) {
 	let inp = ''+dec;
 	let bin = '';
@@ -421,6 +490,17 @@ exports.convertDecToBin = function(dec) {
 	}
 	bin = inp+bin;
 	return bin;
+}
+
+
+exports.convertBinToDec = function(bin) {
+	let dec = '';
+	let exp = 1;
+	for (var i = bin.length - 1; i >= 0; i--) {
+		dec += exp*bin[i];
+		exp *= 2;
+	};
+	return dec;
 }
 
 
@@ -436,7 +516,7 @@ exports.convertDecToHex = function(dec) {
 
 
 exports.convertDecToOct = function(dec) {
-	var oct = '';
+	let oct = '';
 	let decT = dec;
 	while (decT > 7) {
 		oct = (decT % 8) + oct;
@@ -453,10 +533,8 @@ exports.convertDecTo256 = function(dec) {
 	let decT = dec;
 	while (decT > 0) {
 		ab256.unshift(decT % 256);
-		// sb256 = (decT % 256) + sb256;
 		decT = Math.floor(decT / 256);
 	}
-	// ab256.push(decT % 256);
 	sb256 = ab256.join(',');
 	return sb256;
 }
@@ -467,32 +545,25 @@ exports.convertDecTo256 = function(dec) {
 
 const converter = __webpack_require__(4);
 const validate = __webpack_require__(3);
-// const dom = require('./dom.js');
 
 module.exports = function(input, type) {
-	var out = {};
+	const out = {};
 
-	// From decimal
 	if (type == 'decimal') {
 		out.decimal = validate.decimal(input);
-		out.hexadecimal = converter.convertDecToHex(out.decimal);
 		out.binary = converter.convertDecToBin(out.decimal);
-		out.octal = converter.convertDecToOct(out.decimal);
-		out.base256 = converter.convertDecTo256(out.decimal);
+		out.hexadecimal = converter.convertBinToHex(out.binary);
+		out.octal = converter.convertBinToOct(out.binary);
+		out.base256 = converter.convertBinTo256(out.binary);
 	}
-
-	// From hexadecimal
 	else if (type == 'hexadecimal') {
-		var hex = input.toUpperCase();
-		hex = validate.hexadecimal(hex);
-		out.hexadecimal = hex;
-		out.decimal = converter.convertHexToDec(hex);
-		out.binary = converter.convertDecToBin(out.decimal);
-		out.octal = converter.convertDecToOct(out.decimal);
-		out.base256 = converter.convertDecTo256(out.decimal);
+		const hex = input.toUpperCase();
+		out.hexadecimal = validate.hexadecimal(hex);
+		out.binary = converter.convertHexToBin(out.hexadecimal);
+		out.decimal = converter.convertBinToDec(out.hexadecimal);
+		out.octal = converter.convertBinToOct(out.binary);
+		out.base256 = converter.convertBinTo256(out.binary);
 	}
-
-	// From binary
 	else if (type == 'binary') {
 		out.binary = validate.binary(input);
 		out.decimal = converter.convertBinToDec(out.binary);
@@ -500,30 +571,11 @@ module.exports = function(input, type) {
 		out.octal = converter.convertDecToOct(out.decimal);
 		out.base256 = converter.convertDecTo256(out.decimal);
 	}
-
-	// From octal
 	else if (type == 'octal') {
-		// out.octal = input.replace(/[^0-7]/g, '');
 		out.octal = validate.octal(input);
 		out.decimal = converter.convertOctToDec(out.octal);
 		out.binary = converter.convertDecToBin(out.decimal);
 		out.hexadecimal = converter.convertDecToHex(out.decimal);
-		out.base256 = converter.convertDecTo256(out.decimal);
-	}
-	else if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
-		if (type == 'rgb_r') {
-			out.rgb_r = Math.min(validate.rgb(input), 255);
-		}
-		if (type == 'rgb_g') {
-			out.rgb_g = Math.min(validate.rgb(input), 255);
-		}
-		if (type == 'rgb_b') {
-			out.rgb_b = Math.min(validate.rgb(input), 255);
-		}
-		out.hexadecimal = converter.convertDecToHex(out.rgb_r).padStart(2,'0') + converter.convertDecToHex(out.rgb_g).padStart(2,'0') + converter.convertDecToHex(out.rgb_b).padStart(2,'0');
-		out.decimal = converter.convertHexToDec(out.hexadecimal);
-		out.binary = converter.convertDecToBin(out.decimal);
-		out.octal = converter.convertDecToOct(out.decimal);
 		out.base256 = converter.convertDecTo256(out.decimal);
 	}
 	else if (type == 'base256') {
@@ -537,34 +589,11 @@ module.exports = function(input, type) {
 		return;
 	}
 
-	// Color
-	if (type == 'rgb_r' || type == 'rgb_g' || type == 'rgb_b') {
-		if (type == 'rgb_r') {
-			out.rgb_r = Math.min(validate.rgb(input), 255);
-		}
-		if (type == 'rgb_g') {
-			out.rgb_g = Math.min(validate.rgb(input), 255);
-		}
-		if (type == 'rgb_b') {
-			out.rgb_b = Math.min(validate.rgb(input), 255);
-		}
-		out.hexadecimal = converter.convertDecToHex(out.rgb_r).padStart(2,'0') + converter.convertDecToHex(out.rgb_g).padStart(2,'0') + converter.convertDecToHex(out.rgb_b).padStart(2,'0');
-		out.color = out.hexadecimal.padStart(6,'0');
+	if (out.hexadecimal.length > 6) {
+		out.color = '';
 	}
 	else {
-		if (out.hexadecimal.length > 6) {
-			out.color = '';
-			out.rgb_r = '';
-			out.rgb_g = '';
-			out.rgb_b = '';
-		}
-		else {
-			const hexinput = out.hexadecimal.padStart(6, '0');
-			out.color = hexinput;
-			out.rgb_r = converter.convertHexToDec(hexinput.slice(0,2));
-			out.rgb_g = converter.convertHexToDec(hexinput.slice(2,4));
-			out.rgb_b = converter.convertHexToDec(hexinput.slice(4,6));
-		}
+		out.color = out.hexadecimal.padStart(6, '0');
 	}
 
 	return out;

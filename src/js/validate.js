@@ -1,12 +1,7 @@
 const tools = require('./tools.js');
 
 exports.decimal = function(inp) {
-	let a = parseInt(inp);
-	if (isNaN(a)) {
-		a = 0;
-	}
-	a = Math.max(0, a);
-	return a;
+	return (''+inp).replace(/[^0-9]/g, '');
 }
 
 
@@ -18,6 +13,7 @@ exports.octal = function(inp) {
 exports.hexadecimal = function(inp) {
 	return inp.replace(/[^A-F0-9]/g, '');
 }
+
 
 exports.binary = function(input) {
 	return input.replace(/[^01]/g, '');
@@ -33,6 +29,3 @@ exports.base256 = function(inp) {
 	}
 	return ab256.join(',');
 }
-
-
-exports.rgb = tools.intval;

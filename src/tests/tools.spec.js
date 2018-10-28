@@ -39,7 +39,26 @@ describe('tools', function() {
 	});
 
 	it ('decToHex', function() {
-		expect(tools.decToHex(0)).toBe(0);
+		expect(tools.decToHex(0)).toBe('0');
 		expect(tools.decToHex(10)).toBe('A');
+	});
+
+
+	it ('hexToDec', function() {
+		expect(tools.decToHex('0')).toBe('0');
+		expect(tools.decToHex('A')).toBe('10');
+	});
+
+	it ('binToDec', function() {
+		expect(tools.binToDec('1010')).toBe(10);
+		expect(tools.binToDec('100101101101000001000')).toBe(1235464);
+	});
+
+	it ('binToHex', function() {
+		expect(tools.binToHex('0')).toBe('0');
+		expect(tools.binToHex('0010')).toBe('2');
+		expect(tools.binToHex('10')).toBe('2');
+		expect(tools.binToHex('1010')).toBe('A');
+		expect(tools.binToHex('1111')).toBe('F');
 	});
 });
