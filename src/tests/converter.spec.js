@@ -69,4 +69,17 @@ describe ('converter', function() {
 		expect(converter.convertHexToBin('12DA08')).toBe('100101101101000001000');
 		expect(converter.convertHexToBin('92DA08')).toBe('100100101101101000001000');
 	});
+
+	it ('convertOctToBin', function() {
+		expect(converter.convertOctToBin('2')).toBe('10');
+		expect(converter.convertOctToBin('12')).toBe('1010');
+		expect(converter.convertOctToBin('26')).toBe('10110');
+		expect(converter.convertOctToBin('1153321')).toBe('1001101011011010001');
+		expect(converter.convertOctToBin('4555010')).toBe('100101101101000001000');
+	});
+
+	it ('convert256ToBin', function() {
+		expect(converter.convert256ToBin('10')).toBe('1010');
+		expect(converter.convert256ToBin('18,218,8')).toBe('100101101101000001000');
+	});
 });

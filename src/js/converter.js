@@ -151,3 +151,11 @@ exports.convertDecTo256 = function(dec) {
 	sb256 = ab256.join(',');
 	return sb256;
 }
+
+exports.convertOctToBin = function(oct) {
+	let bin = '';
+	for (let i=0; i<oct.length; i++) {
+		bin += tools.decToBin(oct[i]).padStart(3, '0');
+	}
+	return bin;
+}
