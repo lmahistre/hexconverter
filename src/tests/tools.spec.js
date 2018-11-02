@@ -15,15 +15,24 @@ describe('tools', function() {
 	});
 
 	it ('divBy2', function() {
-		expect(tools.divBy2(7)).toBe('3');
+		expect(tools.divBy2('7')).toBe('3');
 		expect(tools.divBy2('72131313615431548131854542896')).toBe('36065656807715774065927271448');
 		expect(tools.divBy2('72131313615431548131854542897')).toBe('36065656807715774065927271448');
 	});
 
-	it ('filter0', function() {
-		expect(tools.filter0('0000055')).toBe('55');
-		expect(tools.filter0('00000550')).toBe('550');
-		expect(tools.filter0('42')).toBe('42');
+	it ('multiplyBy2', function() {
+		expect(tools.multiplyBy2('')).toBe('');
+		expect(tools.multiplyBy2('3')).toBe('6');
+		expect(tools.multiplyBy2('36065656807715774065927271448')).toBe('72131313615431548131854542896');
+	});
+
+	it ('add1', function() {
+		expect(tools.add1('')).toBe('1');
+		expect(tools.add1('3')).toBe('4');
+		expect(tools.add1('3138549')).toBe('3138550');
+		expect(tools.add1('3138599')).toBe('3138600');
+		expect(tools.add1('999')).toBe('1000');
+		expect(tools.add1('36065656807715774065927271448')).toBe('36065656807715774065927271449');
 	});
 
 	it ('higherThan1', function() {
@@ -45,8 +54,8 @@ describe('tools', function() {
 
 
 	it ('hexToDec', function() {
-		expect(tools.decToHex('0')).toBe('0');
-		expect(tools.decToHex('A')).toBe('10');
+		expect(tools.hexToDec('0')).toBe(0);
+		expect(tools.hexToDec('A')).toBe(10);
 	});
 
 	it ('binToDec', function() {
@@ -60,5 +69,14 @@ describe('tools', function() {
 		expect(tools.binToHex('10')).toBe('2');
 		expect(tools.binToHex('1010')).toBe('A');
 		expect(tools.binToHex('1111')).toBe('F');
+	});
+
+	it ('trim0', function() {
+		expect(tools.trim0('0000000100101')).toBe('100101');
+		expect(tools.trim0('0100101')).toBe('100101');
+		expect(tools.trim0('101')).toBe('101');
+		expect(tools.trim0('0000055')).toBe('55');
+		expect(tools.trim0('00000550')).toBe('550');
+		expect(tools.trim0('42')).toBe('42');
 	});
 });

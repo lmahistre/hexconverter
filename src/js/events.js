@@ -27,5 +27,4 @@ exports.updateValues = function(inputValue, id) {
 
 exports.onChange = function(event) {
 	exports.updateValues(event.target.value, event.target.id);
-	dom.updateFocus(event);
 }

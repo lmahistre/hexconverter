@@ -46,18 +46,6 @@ const getBase256Value = function() {
 }
 
 
-const updateFocus = function(event) {
-	if (event.which != 9 && event.which != 16) {
-		if (event.target.id == 'rgb_r' && document.getElementById('rgb_r').value.length >= 3) {
-			document.getElementById('rgb_g').focus();
-		}
-		if (event.target.id == 'rgb_g' && document.getElementById('rgb_g').value.length >= 3) {
-			document.getElementById('rgb_b').focus();
-		}
-	}
-}
-
-
 const getUrlHexadecimalValue = function() {
 	const url = location.href;
 	if (url.indexOf('#') > -1) {
@@ -100,7 +88,6 @@ module.exports = {
 	updateColor,
 	getHexadecimalValue,
 	setDOMContentLoadedEvent,
-	updateFocus,
 	setKeyUp,
 	setLinkNewWindowClickEvent,
 	focusDecimal,

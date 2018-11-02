@@ -11,7 +11,7 @@ exports.octal = function(inp) {
 
 
 exports.hexadecimal = function(inp) {
-	return inp.replace(/[^A-F0-9]/g, '');
+	return inp.toUpperCase().replace(/[^A-F0-9]/g, '');
 }
 
 

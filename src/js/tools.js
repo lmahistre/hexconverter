@@ -26,20 +26,52 @@ exports.divBy2 = function(dec) {
 		}
 		aOut[i] = parseInt(inp[i]/2);
 	}
-	return exports.filter0(aOut.join(''));
+	return exports.trim0(aOut.join(''));
 }
 
 
 exports.multiplyBy2 = function(dec) {
-
+	const inp = ''+dec;
+	let aOut = [];
+	for (let i=0; i<=inp.length; i++) {
+		aOut[i] = 0;
+	}
+	for (let i=inp.length-1; i>=0; i--) {
+		let x = parseInt(inp[i]) * 2;
+		aOut[i+1] += x;
+		if (aOut[i+1] > 9) {
+			aOut[i+1] -= 10;
+			aOut[i] += 1;
+		}
+	}
+	return exports.trim0(aOut.join(''));
 }
 
 
-exports.filter0 = function(str) {
-	while (str.charAt(0) === '0') {
-		str = str.substr(1);
+exports.add1 = function(dec) {
+	const inp = ''+dec;
+	if (inp.length > 0) {
+		let aOut = [];
+		for (let i=0; i<=inp.length; i++) {
+			if (i > 0) {
+				aOut[i] = parseInt(inp[i-1]);
+			}
+			else {
+				aOut[i] = 0;
+			}
+		}
+		aOut[inp.length] += 1;
+		for (let i=inp.length-1; i>=0; i--) {
+			if (aOut[i+1] > 9) {
+				aOut[i+1] -= 10;
+				aOut[i] += 1;
+			}
+		}
+		return exports.trim0(aOut.join(''));
 	}
-	return str;
+	else {
+		return '1';
+	}
 }
 
 
@@ -128,6 +160,12 @@ exports.binToHex = function(bin) {
 	return ''+exports.decToHex(exports.binToDec(bin));
 }
 
+
 exports.hexToBin = function(hex) {
 	return (''+exports.decToBin(exports.hexToDec(hex))).padStart(4, '0');
+}
+
+
+exports.trim0 = function(str) {
+	return str.replace(/^0+/gm,'');
 }

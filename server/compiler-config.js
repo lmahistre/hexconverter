@@ -54,10 +54,10 @@ module.exports = {
 	test : {
 		spec_dir: 'src/tests',
 		spec_files: [
-			'compute.spec.js',
-			'converter.spec.js',
 			'tools.spec.js',
 			'validate.spec.js',
+			'converter.spec.js',
+			'compute.spec.js',
 		],
 		helpers: [],
 	},

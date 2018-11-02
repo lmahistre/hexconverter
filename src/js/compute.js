@@ -12,8 +12,7 @@ module.exports = function(input, type) {
 		out.base256 = converter.convertBinTo256(out.binary);
 	}
 	else if (type == 'hexadecimal') {
-		const hex = input.toUpperCase();
-		out.hexadecimal = validate.hexadecimal(hex);
+		out.hexadecimal = validate.hexadecimal(input);
 		out.binary = converter.convertHexToBin(out.hexadecimal);
 		out.decimal = converter.convertBinToDec(out.binary);
 		out.octal = converter.convertBinToOct(out.binary);
