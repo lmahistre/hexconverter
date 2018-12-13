@@ -37,6 +37,6 @@ describe ('validate', function() {
 		expect(validate.base256('3f')).toBe('3');
 		expect(validate.base256('3fv')).toBe('3');
 		expect(validate.base256('3f,5v')).toBe('3,5');
-		expect(validate.base256('300,5v')).toBe('255,5');
+		expect(validate.base256('300,5v')).toBe('30,5');
 	});
 });

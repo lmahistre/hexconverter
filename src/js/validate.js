@@ -25,7 +25,9 @@ exports.base256 = function(inp) {
 	let ab256 = base256.split(',');
 	for (let i=0; i<ab256.length; i++) {
 		ab256[i] = exports.decimal(ab256[i]);
-		ab256[i] = Math.min(255, ab256[i]);
+		if (parseInt(ab256[i]) > 255) {
+			ab256[i] = ab256[i].substr(0, ab256[i].length - 1);
+		}
 	}
 	return ab256.join(',');
 }
