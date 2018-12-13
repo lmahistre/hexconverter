@@ -1,69 +1,46 @@
-
+const tasks = require('./tasks.js');
 const config = require('./compiler-config.js');
-const compiler = require('./compiler.js');
 const chalk = require('chalk');
 
+exports.css = function (args) {
+	tasks.css();
+}
+
+
+exports.js = function (args) {
+	tasks.js();
+}
+
+
 exports.test = function(args) {
-	const Jasmine = require('jasmine');
-	const jasmine = new Jasmine();
-	jasmine.loadConfig(config.test);
-	jasmine.onComplete(function(passed) {
-		console.log(' --- ')
-		if(passed) {
-			console.log(chalk.green('All tests pass'));
-		}
-		else {
-			console.log(chalk.red('At least one test failed'));
-		}
+	tasks.test().then(function(result) {
+		console.log(chalk.green(result));
+	}).catch(function (error) {
+		console.log(chalk.red(result));
 	});
-	jasmine.execute();
 }
 
 
 exports.dev = function(args) {
-	compiler.webpack(config.webpack, function(error, success) {
-		if (success) {
-			console.log(chalk.green('Successfully compiled'));
-		}
-		else {
-			console.log(chalk.red(error));
-		}
-	});
-}
-
-
-exports.help = function(args) {
-	console.log('Usage: github-todo [OPTION]');
-	console.log('Options:');
-	for (let k in exports) {
-		console.log ('  '+k+ '');
-	}
+	tasks.js().then(tasks.css);
 }
 
 
 exports.build = function(args) {
-	compiler.webpack(config.webpack, function(error, success) {
-		if (success) {
-			console.log('Successfully compiled');
-		}
-		else {
-			console.log(error);
-		}
-		exports.test();
-	});
+	tasks.js().then(tasks.css).then(tasks.test);
 }
 
 
 exports.start = function(args) {
-	require('./server.js')();
+	tasks.start().then(function(port) {
+		console.log(chalk.green('Server is listening on port '+port));
+	});
 }
 
 
 exports.publish = function(args) {
 	const zip = require('./zip.js');
-	zip.addon(function() {
-		zip.source();
-	});
+	zip.addon().then(zip.source);
 }
 
 
@@ -74,8 +51,6 @@ exports.watch = function(args) {
 		recursive: true 
 	}, function(evt, name) {
 		console.log('%s changed.', name);
-		exports.build();
+		tasks.js().then(tasks.css).then(tasks.test);
 	});
 }
-
-exports['--help'] = exports['-h'] = exports.help;

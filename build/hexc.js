@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -265,7 +265,7 @@ exports.trim0 = function(str) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-const colorsByCode = __webpack_require__(7);
+const colorsByCode = __webpack_require__(6);
 
 const updateColor = function(colorCode) {
 	let colorName = '';
@@ -367,12 +367,6 @@ module.exports = {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
 const tools = __webpack_require__(0);
 
 exports.decimal = function(inp) {
@@ -400,14 +394,16 @@ exports.base256 = function(inp) {
 	let ab256 = base256.split(',');
 	for (let i=0; i<ab256.length; i++) {
 		ab256[i] = exports.decimal(ab256[i]);
-		ab256[i] = Math.min(255, ab256[i]);
+		if (parseInt(ab256[i]) > 255) {
+			ab256[i] = ab256[i].substr(0, ab256[i].length - 1);
+		}
 	}
 	return ab256.join(',');
 }
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const tools = __webpack_require__(0);
@@ -525,11 +521,11 @@ exports.convert256ToBin = function(tfs) {
 }
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const converter = __webpack_require__(4);
-const validate = __webpack_require__(3);
+const converter = __webpack_require__(3);
+const validate = __webpack_require__(2);
 
 module.exports = function(input, type) {
 	const out = {};
@@ -584,11 +580,11 @@ module.exports = function(input, type) {
 }
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const dom = __webpack_require__(1);
-const compute = __webpack_require__(5);
+const compute = __webpack_require__(4);
 
 exports.openNewWindow = function(event) {
 	try {
@@ -620,7 +616,7 @@ exports.onChange = function(event) {
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -767,11 +763,11 @@ module.exports = {
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 const dom = __webpack_require__(1);
-const events = __webpack_require__(6);
+const events = __webpack_require__(5);
 
 dom.setDOMContentLoadedEvent(function() {
 	dom.setKeyUp(events.onChange);
@@ -788,11 +784,10 @@ dom.setDOMContentLoadedEvent(function() {
 });
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(8);
-module.exports = __webpack_require__(2);
+module.exports = __webpack_require__(7);
 
 
 /***/ })

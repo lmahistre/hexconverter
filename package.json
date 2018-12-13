@@ -32,8 +32,6 @@
     "express": "^4.16.3",
     "jasmine": "^3.1.0",
     "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "mini-css-extract-plugin": "^0.4.4",
     "node-watch": "^0.5.8",
     "webpack": "^4.12.1",
     "webpack-cli": "^3.1.2"

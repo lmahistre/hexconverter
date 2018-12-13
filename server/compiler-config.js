@@ -1,16 +1,14 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const path = require('path');
 const appDirName = path.resolve(__dirname+'/..');
 
 module.exports = {
-	webpack : {
+	js : {
 		mode: 'production',
 		entry : {
 			hexc :[
 				appDirName+"/src/js/entry.js",
-				appDirName+"/src/less/index.less",
 			],
 		},
 		output : {
@@ -20,28 +18,7 @@ module.exports = {
 		optimization : {
 			minimize : false,
 		},
-		module : {
-			rules : [
-				{
-					test : /\.less$/,
-					use : [
-						{ 
-							loader : MiniCssExtractPlugin.loader 
-						},
-						{
-							loader : 'css-loader',
-						},
-						{
-							loader : 'less-loader',
-						},
-					],
-				},
-			],
-		},
 		plugins: [
-			new MiniCssExtractPlugin({
-				filename: "hexc.css",
-			}),
 			new CleanWebpackPlugin([
 				appDirName+'/build/hexc.js',
 				appDirName+'/build/hexc.css',
@@ -49,7 +26,6 @@ module.exports = {
 				allowExternal : true,
 			}),
 		],
-
 	},
 	test : {
 		spec_dir: 'src/tests',
@@ -60,5 +36,14 @@ module.exports = {
 			'compute.spec.js',
 		],
 		helpers: [],
+	},
+	app : {
+		port : 3007,
+	},
+	css : {
+		inputFolder : appDirName+'/src/less',
+		inputFilename : 'index.less',
+		outputFolder : appDirName+'/build',
+		outputFilename : 'hexc.css',
 	},
 };
