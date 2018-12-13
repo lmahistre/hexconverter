@@ -1,6 +1,6 @@
 # Hexconverter
 
-## 1.5
+## 1.5 (13/12/2018)
 
 * Support for very long integers
 * RGB inputs replaced by base 256
