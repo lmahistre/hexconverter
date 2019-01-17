@@ -14,3 +14,12 @@ dom.setDOMContentLoadedEvent(function() {
 		dom.removeActionsBlock();
 	}
 });
+
+
+window.onload = function() {
+	document.title = 'Hexconverter';
+	ReactDOM.render(
+		React.createElement(Main, null),
+		document.getElementById('application-container')
+	);
+}
