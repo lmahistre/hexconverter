@@ -1,31 +1,32 @@
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-
 const path = require('path');
 const appDirName = path.resolve(__dirname+'/..');
 
 module.exports = {
 	js : {
 		mode: 'production',
+		module: {
+			rules: [
+				{
+					test: /\.jsx$/,
+					exclude: /node_modules/,
+					use: {
+						loader: "babel-loader",
+					},
+				},
+			],
+		},
 		entry : {
 			hexc :[
 				appDirName+"/src/js/entry.js",
 			],
 		},
 		output : {
-			path : appDirName +'/build',
+			path : appDirName +'/public',
 			filename : '[name].js',
 		},
 		optimization : {
 			minimize : false,
 		},
-		plugins: [
-			new CleanWebpackPlugin([
-				appDirName+'/build/hexc.js',
-				appDirName+'/build/hexc.css',
-			], {
-				allowExternal : true,
-			}),
-		],
 	},
 	test : {
 		spec_dir: 'src/tests',
@@ -43,7 +44,7 @@ module.exports = {
 	css : {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
-		outputFolder : appDirName+'/build',
+		outputFolder : appDirName+'/public',
 		outputFilename : 'hexc.css',
 	},
 };

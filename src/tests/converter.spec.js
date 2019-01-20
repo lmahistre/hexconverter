@@ -1,4 +1,4 @@
-const converter = require('../js/converter.js');
+const converter = require('../js/services/converter.js');
 
 describe ('converter', function() {
 

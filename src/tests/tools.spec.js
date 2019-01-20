@@ -1,4 +1,4 @@
-const tools = require('../js/tools.js');
+const tools = require('../js/services/tools.js');
 
 describe('tools', function() {
 	it ('intval', function() {

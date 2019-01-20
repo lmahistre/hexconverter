@@ -1,5 +1,10 @@
 # Hexconverter
 
+## 1.6
+
+* Migration to React
+* Modification of logo
+
 ## 1.5 (13/12/2018)
 
 * Support for very long integers

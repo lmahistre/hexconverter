@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const archiver = require('archiver');
 const package = require('../package.json');
@@ -15,7 +14,7 @@ exports.addon = function() {
 			console.log(Math.ceil(archive.pointer()/1000) + ' kB');
 		});
 		archive.pipe(output);
-		archive.directory('build', false);
+		archive.directory('public', false);
 		archive.finalize();
 		resolve();
 	});
@@ -27,7 +26,7 @@ exports.source = function(callback) {
 		const output = fs.createWriteStream(__dirname + '/../'+package.name+'-'+package.version+'.src.zip');
 		const archive = archiver('zip', {
 			zlib: { 
-				level: 9 
+				level: 9,
 			},
 		});
 		output.on('close', function() {
@@ -35,7 +34,7 @@ exports.source = function(callback) {
 		});
 
 		archive.pipe(output);
-		archive.directory('build', 'build');
+		archive.directory('public', 'public');
 		archive.directory('server', 'server');
 		archive.directory('src', 'src');
 

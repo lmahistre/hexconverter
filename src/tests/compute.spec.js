@@ -1,4 +1,4 @@
-const compute = require('../js/compute.js');
+const compute = require('../js/services/compute.js');
 
 describe('compute', function() {
 	it ('type decimal', function() {
@@ -8,8 +8,9 @@ describe('compute', function() {
 			hexadecimal : '47E',
 			binary : '10001111110',
 			octal : '2176',
-			color: '00047E',
 			base256 : '4,126',
+			color: '00047E',
+			colorName : '',
 		});
 	});
 
@@ -20,8 +21,9 @@ describe('compute', function() {
 			hexadecimal : '47E',
 			binary : '10001111110',
 			octal : '2176',
-			color: '00047E',
 			base256 : '4,126',
+			color: '00047E',
+			colorName : '',
 		});
 	});
 
@@ -32,8 +34,9 @@ describe('compute', function() {
 			hexadecimal : '47E',
 			binary : '10001111110',
 			octal : '2176',
-			color: '00047E',
 			base256 : '4,126',
+			color: '00047E',
+			colorName : '',
 		});
 	});
 
@@ -44,8 +47,9 @@ describe('compute', function() {
 			hexadecimal : '47E',
 			binary : '10001111110',
 			octal : '2176',
-			color: '00047E',
 			base256 : '4,126',
+			color: '00047E',
+			colorName : '',
 		});
 	});
 
@@ -56,8 +60,9 @@ describe('compute', function() {
 			hexadecimal : '47E',
 			binary : '10001111110',
 			octal : '2176',
-			color: '00047E',
 			base256 : '4,126',
+			color: '00047E',
+			colorName : '',
 		});
 	});
 });

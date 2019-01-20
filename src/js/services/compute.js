@@ -1,5 +1,6 @@
 const converter = require('./converter.js');
 const validate = require('./validate.js');
+const colorsByCode = require('../services/colors.js');
 
 module.exports = function(input, type) {
 	const out = {};
@@ -43,11 +44,14 @@ module.exports = function(input, type) {
 		return;
 	}
 
+	// Color
 	if (out.hexadecimal.length > 6) {
 		out.color = '';
+		out.colorName = '';
 	}
 	else {
 		out.color = out.hexadecimal.padStart(6, '0');
+		out.colorName = colorsByCode[out.color] ? colorsByCode[out.color] : '';
 	}
 
 	return out;

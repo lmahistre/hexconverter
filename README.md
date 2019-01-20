@@ -12,7 +12,7 @@ Addon page : [https://addons.mozilla.org/firefox/addon/hexconverter/](https://ad
 
 ## Build and development
 
-The Javascript of the addon is built using [Webpack](https://webpack.js.org).
+The Javascript of the addon is built using [Webpack](https://webpack.js.org) and [React](https://reactjs.org).
 
 First, install dependencies:
 

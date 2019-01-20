@@ -1,6 +1,5 @@
 const tasks = require('./tasks.js');
-const config = require('./compiler-config.js');
-const chalk = require('chalk');
+const config = require('./config.js');
 
 exports.css = function (args) {
 	tasks.css();
@@ -13,11 +12,7 @@ exports.js = function (args) {
 
 
 exports.test = function(args) {
-	tasks.test().then(function(result) {
-		console.log(chalk.green(result));
-	}).catch(function (error) {
-		console.log(chalk.red(result));
-	});
+	tasks.test();
 }
 
 
@@ -32,9 +27,7 @@ exports.build = function(args) {
 
 
 exports.start = function(args) {
-	tasks.start().then(function(port) {
-		console.log(chalk.green('Server is listening on port '+port));
-	});
+	tasks.start();
 }
 
 
@@ -51,6 +44,6 @@ exports.watch = function(args) {
 		recursive: true 
 	}, function(evt, name) {
 		console.log('%s changed.', name);
-		tasks.js().then(tasks.css).then(tasks.test);
+		tasks.js().then(tasks.css);
 	});
 }

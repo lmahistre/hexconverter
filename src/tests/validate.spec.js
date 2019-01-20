@@ -1,4 +1,4 @@
-const validate = require('../js/validate.js');
+const validate = require('../js/services/validate.js');
 
 describe ('validate', function() {
 	it ('decimal', function() {
