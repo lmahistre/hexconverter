@@ -19,5 +19,4 @@ window.onload = function() {
 		React.createElement(Main, props),
 		document.getElementById('application-root')
 	);
-	document.getElementById('decimal').focus();
 }

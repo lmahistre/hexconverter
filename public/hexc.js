@@ -520,128 +520,176 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 var React = __webpack_require__(0);
 
-module.exports = function (props) {
-  return React.createElement("div", null, React.createElement("table", null, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("td", {
-    className: "label",
-    title: "Decimal"
-  }, React.createElement("label", {
-    className: "short"
-  }, "Dec"), React.createElement("label", {
-    className: "long"
-  }, "Decimal")), React.createElement("td", {
-    className: "input"
-  }, React.createElement("div", {
-    className: "input-container"
-  }, React.createElement("input", {
-    id: "decimal",
-    placeholder: "Decimal",
-    className: "large",
-    onChange: props.handleChange,
-    value: props.decimal
-  })))), React.createElement("tr", null, React.createElement("td", {
-    className: "label",
-    title: "Hexadecimal"
-  }, React.createElement("label", {
-    className: "short"
-  }, "Hex"), React.createElement("label", {
-    className: "long"
-  }, "Hexadecimal")), React.createElement("td", {
-    className: "input"
-  }, React.createElement("div", {
-    className: "input-container"
-  }, React.createElement("input", {
-    id: "hexadecimal",
-    placeholder: "Hexadecimal",
-    className: "large",
-    onChange: props.handleChange,
-    value: props.hexadecimal
-  })))), React.createElement("tr", null, React.createElement("td", {
-    className: "label",
-    title: "Binary"
-  }, React.createElement("label", {
-    className: "short"
-  }, "Bin"), React.createElement("label", {
-    className: "long"
-  }, "Binary")), React.createElement("td", {
-    className: "input"
-  }, React.createElement("div", {
-    className: "input-container"
-  }, React.createElement("input", {
-    id: "binary",
-    placeholder: "Binary",
-    className: "large",
-    onChange: props.handleChange,
-    value: props.binary
-  })))), React.createElement("tr", null, React.createElement("td", {
-    className: "label",
-    title: "Octal"
-  }, React.createElement("label", {
-    className: "short"
-  }, "Oct"), React.createElement("label", {
-    className: "long"
-  }, "Octal")), React.createElement("td", {
-    className: "input"
-  }, React.createElement("div", {
-    className: "input-container"
-  }, React.createElement("input", {
-    id: "octal",
-    placeholder: "Octal",
-    className: "large",
-    onChange: props.handleChange,
-    value: props.octal
-  })))), React.createElement("tr", null, React.createElement("td", {
-    className: "label",
-    title: "Base 256"
-  }, React.createElement("label", {
-    className: "short"
-  }, "256"), React.createElement("label", {
-    className: "long"
-  }, "Base 256")), React.createElement("td", {
-    className: "input"
-  }, React.createElement("div", {
-    className: "input-container"
-  }, React.createElement("input", {
-    id: "base256",
-    placeholder: "Base 256 / RGB",
-    className: "large",
-    onChange: props.handleChange,
-    value: props.base256
-  })))), React.createElement("tr", null, React.createElement("td", {
-    className: "label"
-  }, React.createElement("label", {
-    className: "short"
-  }, "Color"), React.createElement("label", {
-    className: "long"
-  }, "Color")), React.createElement("td", {
-    className: "input"
-  }, React.createElement("div", {
-    className: "input-container"
-  }, React.createElement("div", {
-    id: "color_name",
-    className: "medium"
-  }, props.colorName), React.createElement("div", {
-    id: "color-indicator",
-    className: "color-indicator",
-    style: props.color ? {
-      backgroundColor: '#' + props.color
-    } : {}
-  }, "\xA0")))))), props.showNewWindow ? React.createElement("div", {
-    className: "actions"
-  }, React.createElement("a", {
-    href: "#",
-    id: "link_new_window",
-    className: "action",
-    title: "New window",
-    onClick: props.openNewWindow
-  }, React.createElement("img", {
-    src: "img/new_window.png",
-    alt: "New window"
-  })), React.createElement("div", {
-    className: "clearfix"
-  })) : null);
-};
+var Vue =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Vue, _React$Component);
+
+  function Vue(props) {
+    var _this;
+
+    _classCallCheck(this, Vue);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Vue).call(this));
+    _this.decimalRef = React.createRef();
+    return _this;
+  }
+
+  _createClass(Vue, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.decimalRef.current.focus();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var props = this.props;
+      return React.createElement("div", null, React.createElement("table", null, React.createElement("tbody", null, React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Decimal"
+      }, React.createElement("label", {
+        className: "short"
+      }, "Dec"), React.createElement("label", {
+        className: "long"
+      }, "Decimal")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        id: "decimal",
+        placeholder: "Decimal",
+        className: "large",
+        onChange: props.handleChange,
+        value: props.decimal,
+        ref: this.decimalRef
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Hexadecimal"
+      }, React.createElement("label", {
+        className: "short"
+      }, "Hex"), React.createElement("label", {
+        className: "long"
+      }, "Hexadecimal")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        id: "hexadecimal",
+        placeholder: "Hexadecimal",
+        className: "large",
+        onChange: props.handleChange,
+        value: props.hexadecimal
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Binary"
+      }, React.createElement("label", {
+        className: "short"
+      }, "Bin"), React.createElement("label", {
+        className: "long"
+      }, "Binary")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        id: "binary",
+        placeholder: "Binary",
+        className: "large",
+        onChange: props.handleChange,
+        value: props.binary
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Octal"
+      }, React.createElement("label", {
+        className: "short"
+      }, "Oct"), React.createElement("label", {
+        className: "long"
+      }, "Octal")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        id: "octal",
+        placeholder: "Octal",
+        className: "large",
+        onChange: props.handleChange,
+        value: props.octal
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label",
+        title: "Base 256"
+      }, React.createElement("label", {
+        className: "short"
+      }, "256"), React.createElement("label", {
+        className: "long"
+      }, "Base 256")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("input", {
+        id: "base256",
+        placeholder: "Base 256 / RGB",
+        className: "large",
+        onChange: props.handleChange,
+        value: props.base256
+      })))), React.createElement("tr", null, React.createElement("td", {
+        className: "label"
+      }, React.createElement("label", {
+        className: "short"
+      }, "Color"), React.createElement("label", {
+        className: "long"
+      }, "Color")), React.createElement("td", {
+        className: "input"
+      }, React.createElement("div", {
+        className: "input-container"
+      }, React.createElement("div", {
+        id: "color_name",
+        className: "medium"
+      }, props.colorName), React.createElement("div", {
+        id: "color-indicator",
+        className: "color-indicator",
+        style: props.color ? {
+          backgroundColor: '#' + props.color
+        } : {}
+      }, "\xA0")))))), props.showNewWindow ? React.createElement("div", {
+        className: "actions"
+      }, React.createElement("a", {
+        href: "#",
+        id: "link_new_window",
+        className: "action",
+        title: "New window",
+        onClick: props.openNewWindow
+      }, React.createElement("img", {
+        src: "img/new_window.png",
+        alt: "New window"
+      })), React.createElement("div", {
+        className: "clearfix"
+      })) : null);
+    }
+  }]);
+
+  return Vue;
+}(React.Component);
+
+module.exports = Vue;
 
 /***/ }),
 /* 5 */
@@ -1380,7 +1428,6 @@ window.onload = function() {
 		React.createElement(Main, props),
 		document.getElementById('application-root')
 	);
-	document.getElementById('decimal').focus();
 }
 
 /***/ }),

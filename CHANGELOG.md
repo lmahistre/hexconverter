@@ -1,6 +1,6 @@
 # Hexconverter
 
-## 1.6
+## 1.6 (02/02/2019)
 
 * Migration to React
 * Modification of logo
