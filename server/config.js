@@ -27,6 +27,7 @@ module.exports = {
 		optimization : {
 			minimize : false,
 		},
+		node : false,
 	},
 	test : {
 		spec_dir: 'src/tests',

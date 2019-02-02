@@ -1,6 +1,6 @@
 {
   "name": "hexconverter",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "This addon instantly converts numbers from and to different formats : decimal, binary, octal, hexadecimal and RGB formatted colors.",
   "main": "build.js",
   "directories": {

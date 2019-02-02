@@ -1,5 +1,9 @@
 # Hexconverter
 
+## 1.6.1 (02/02/2019)
+
+* fix warning "The Function constructor is eval" during add-on submission
+
 ## 1.6 (02/02/2019)
 
 * Migration to React
