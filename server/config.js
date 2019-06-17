@@ -17,11 +17,38 @@ module.exports = {
 		},
 		entry : {
 			hexc :[
-				appDirName+"/src/js/entry.js",
+				appDirName+"/src/js/entry-site.js",
 			],
 		},
 		output : {
 			path : appDirName +'/public',
+			filename : '[name].js',
+		},
+		optimization : {
+			minimize : false,
+		},
+		node : false,
+	},
+	jsAddon : {
+		mode: 'production',
+		module: {
+			rules: [
+				{
+					test: /\.jsx$/,
+					exclude: /node_modules/,
+					use: {
+						loader: "babel-loader",
+					},
+				},
+			],
+		},
+		entry : {
+			hexc :[
+				appDirName+"/src/js/entry-addon.js",
+			],
+		},
+		output : {
+			path : appDirName +'/addon',
 			filename : '[name].js',
 		},
 		optimization : {
@@ -46,6 +73,12 @@ module.exports = {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
 		outputFolder : appDirName+'/public',
+		outputFilename : 'hexc.css',
+	},
+	cssAddon : {
+		inputFolder : appDirName+'/src/less',
+		inputFilename : 'index.less',
+		outputFolder : appDirName+'/addon',
 		outputFilename : 'hexc.css',
 	},
 };
