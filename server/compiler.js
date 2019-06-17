@@ -3,11 +3,11 @@ const fs = require('fs');
 const config = require('./config.js');
 
 
-exports.css = function() {
+const css = function(conf) {
 	const less = require('less');
 	return new Promise(function(resolve, reject) {
 		try {
-			fs.readFile(config.css.inputFolder+'/'+config.css.inputFilename, { 
+			fs.readFile(conf.inputFolder+'/'+conf.inputFilename, { 
 				encoding: 'utf8' 
 			}, 
 			function(err, data) {
@@ -15,8 +15,8 @@ exports.css = function() {
 					reject(err);
 				}
 				less.render(data, {
-					paths: [config.css.inputFolder+'/'],
-					filename: './'+config.css.inputFilename,
+					paths: [conf.inputFolder+'/'],
+					filename: './'+conf.inputFilename,
 					compress: false,
 				},
 				function (e, output) {
@@ -24,7 +24,7 @@ exports.css = function() {
 						resolve();
 					}
 					else {
-						fs.writeFile(config.css.outputFolder+'/'+config.css.outputFilename, output.css, {
+						fs.writeFile(conf.outputFolder+'/'+conf.outputFilename, output.css, {
 							flag:'w+', 
 							encoding:'utf8'
 						},
@@ -46,10 +46,17 @@ exports.css = function() {
 	});
 }
 
+exports.cssAddon = function() {
+	return css(config.cssAddon);
+}
 
-exports.js = function() {
+exports.cssSite = function() {
+	return css(config.cssSite);
+}
+
+const js = function(conf) {
 	return new Promise(function(resolve, reject) {
-		const webpackCompiler = webpack(config.js);
+		const webpackCompiler = webpack(conf);
 		try {
 			webpackCompiler.run(function(err, stats) {
 				try {
@@ -74,6 +81,13 @@ exports.js = function() {
 	});
 }
 
+exports.jsAddon = function() {
+	return js(config.jsAddon);
+}
+
+exports.jsSite = function() {
+	return js(config.jsSite);
+}
 
 exports.start = function () {
 	return new Promise(function(resolve, reject) {

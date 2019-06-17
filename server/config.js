@@ -2,7 +2,7 @@ const path = require('path');
 const appDirName = path.resolve(__dirname+'/..');
 
 module.exports = {
-	js : {
+	jsSite : {
 		mode: 'production',
 		module: {
 			rules: [
@@ -51,9 +51,9 @@ module.exports = {
 			path : appDirName +'/addon',
 			filename : '[name].js',
 		},
-		optimization : {
-			minimize : false,
-		},
+		// optimization : {
+		// 	minimize : false,
+		// },
 		node : false,
 	},
 	test : {
@@ -69,7 +69,7 @@ module.exports = {
 	app : {
 		port : 3007,
 	},
-	css : {
+	cssSite : {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
 		outputFolder : appDirName+'/public',

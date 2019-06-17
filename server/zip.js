@@ -11,10 +11,10 @@ exports.addon = function() {
 			},
 		});
 		output.on('close', function() {
-			console.log(Math.ceil(archive.pointer()/1000) + ' kB');
+			console.log('Size of addon zip: ' + Math.ceil(archive.pointer()/1000) + ' kB');
 		});
 		archive.pipe(output);
-		archive.directory('public', false);
+		archive.directory('addon', false);
 		archive.finalize();
 		resolve();
 	});
@@ -30,11 +30,12 @@ exports.source = function(callback) {
 			},
 		});
 		output.on('close', function() {
-			console.log(Math.ceil(archive.pointer()/1000) + ' kB');
+			console.log('Size of source zip: ' + Math.ceil(archive.pointer()/1000) + ' kB');
 		});
 
 		archive.pipe(output);
 		archive.directory('public', 'public');
+		archive.directory('addon', 'addon');
 		archive.directory('server', 'server');
 		archive.directory('src', 'src');
 

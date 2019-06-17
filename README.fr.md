@@ -18,6 +18,12 @@ Installer d'abord les dépendances:
 
 `npm install`
 
+Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers générés sont dans ces deux dossiers :
+* `addon` contient les fichiers destinés à l'extension de Firefox
+* `public` contient les fichiers pour utiliser l'application comme une page web
+
+Il y a 2 fichiers générés : `hexc.js` et `hexc.css`.
+
 Pour compiler les fichiers Javascript et CSS :
 
 `npm run dev`
@@ -34,6 +40,8 @@ Pour créer les archives qui contiennent le code de l'addon et le code source :
 
 `npm run publish`
 
-Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers générés sont dans le dossier `build`. Il y a 2 fichiers générés : `hexc.js` et `hexc.css`.
+Le package pour l'addon est fait à partir du dosser `addon`, il contient les fichiers statiques, le manifest et l'HTML.
 
-Le package pour l'addon est fait à partir du dosser `build`, il contient les fichiers statiques, le manifest et l'HTML.
+## Langues
+
+La documentation en anglais est [ici](README.md).

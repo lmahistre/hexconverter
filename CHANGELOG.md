@@ -1,5 +1,9 @@
 # Hexconverter
 
+## 1.6.2
+
+* Separate build into two output folders: for web app and for addon
+
 ## 1.6.1 (02/02/2019)
 
 * fix warning "The Function constructor is eval" during add-on submission

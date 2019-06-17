@@ -1,0 +1,106 @@
+body {
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 14px;
+  background-color: #EEE;
+  max-width: 320px;
+}
+body table {
+  width: 100%;
+  table-layout: fixed;
+}
+body td {
+  padding: 4px 4px;
+}
+body td.label {
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 14px;
+  width: 30px;
+  text-align: left;
+}
+body td.label label.short {
+  display: inline;
+}
+body td.label label.long {
+  display: none;
+}
+body td.input input {
+  width: 100%;
+  text-align: right;
+  font-family: Helvetica, sans-serif, Arial;
+  font-size: 14px;
+  border-color: #DDD;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  padding: 2px 4px;
+  display: block;
+}
+body td.input div.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+body td.input div.input-container input.small {
+  width: 26%;
+}
+body td.input input.small:before,
+body td.input input.small:after {
+  display: none;
+}
+body div.actions {
+  margin-top: 0.6em;
+}
+body div.actions a.action {
+  padding: 0px 8px;
+  text-decoration: none;
+  color: #000;
+  outline: none;
+  float: right;
+}
+body div.actions a.action img {
+  height: 18px;
+  width: 18px;
+}
+body div.color-indicator {
+  width: 24px;
+  height: 20px;
+}
+body div#color_name {
+  padding: 2px;
+}
+body div.clearfix {
+  clear: both;
+}
+@media (min-width: 240px) {
+  td.input div.input-container input.small {
+    width: 27%;
+  }
+}
+@media (min-width: 360px) {
+  body {
+    max-width: none;
+  }
+  body td.label {
+    width: 100px;
+  }
+  body td.label label.short {
+    display: none;
+  }
+  body td.label label.long {
+    display: inline;
+  }
+  body td.input div.input-container input.small {
+    width: 28%;
+  }
+}
+@media (min-width: 480px) {
+  td.input div.input-container input.small {
+    width: 29%;
+  }
+}
+@media (min-width: 768px) {
+  td.input div.input-container input.small {
+    width: 30%;
+  }
+}

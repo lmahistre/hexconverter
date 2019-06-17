@@ -2,12 +2,12 @@ const tasks = require('./tasks.js');
 const config = require('./config.js');
 
 exports.css = function (args) {
-	tasks.css();
+	tasks.cssSite();
 }
 
 
 exports.js = function (args) {
-	tasks.js();
+	tasks.jsSite();
 }
 
 
@@ -17,14 +17,14 @@ exports.test = function(args) {
 
 
 exports.dev = function(args) {
-	tasks.js().then(tasks.css);
+	tasks.jsSite().then(tasks.css);
 }
 
 
 exports.build = function(args) {
-	tasks.js().then(tasks.css).then(tasks.test);
+	tasks.jsSite().then(tasks.cssSite).then(tasks.jsAddon).then(tasks.cssAddon)
+		.then(tasks.test);
 }
-
 
 exports.start = function(args) {
 	tasks.start();
@@ -33,7 +33,7 @@ exports.start = function(args) {
 
 exports.publish = function(args) {
 	const zip = require('./zip.js');
-	zip.addon().then(zip.source);
+	tasks.jsAddon().then(tasks.cssAddon).then(zip.addon).then(zip.source);
 }
 
 
@@ -44,6 +44,6 @@ exports.watch = function(args) {
 		recursive: true 
 	}, function(evt, name) {
 		console.log('%s changed.', name);
-		tasks.js().then(tasks.css);
+		tasks.jsSite().then(tasks.cssSite);
 	});
 }
