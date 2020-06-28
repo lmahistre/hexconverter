@@ -15,14 +15,10 @@ module.exports = {
 				},
 			],
 		},
-		entry : {
-			hexc :[
-				appDirName+"/src/js/entry-site.js",
-			],
-		},
+		entry : appDirName+"/src/js/entry-site.js",
 		output : {
 			path : appDirName +'/public',
-			filename : '[name].js',
+			filename : 'app.js',
 		},
 		optimization : {
 			minimize : false,
@@ -42,18 +38,11 @@ module.exports = {
 				},
 			],
 		},
-		entry : {
-			hexc :[
-				appDirName+"/src/js/entry-addon.js",
-			],
-		},
+		entry : appDirName+"/src/js/entry-addon.js",
 		output : {
 			path : appDirName +'/addon',
-			filename : '[name].js',
+			filename : 'app.js',
 		},
-		// optimization : {
-		// 	minimize : false,
-		// },
 		node : false,
 	},
 	test : {
@@ -68,17 +57,38 @@ module.exports = {
 	},
 	app : {
 		port : 3007,
+		name : 'Hexconverter',
+		iconFormats : [32, 48, 64, 96, 128, 512],
+		themeColor : '#EEE',
 	},
 	cssSite : {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
 		outputFolder : appDirName+'/public',
-		outputFilename : 'hexc.css',
+		outputFilename : 'style.css',
 	},
 	cssAddon : {
 		inputFolder : appDirName+'/src/less',
 		inputFilename : 'index.less',
 		outputFolder : appDirName+'/addon',
-		outputFilename : 'hexc.css',
+		outputFilename : 'style.css',
+	},
+	zipSource : {
+		directories : [
+			'public',
+			'addon',
+			'server',
+			'src',
+		],
+		files : [
+			'.gitignore',
+			'.travis.yml',
+			'build.js',
+			'CHANGELOG.md',
+			'package.json',
+			'package-lock.json',
+			'README.fr.md',
+			'README.md',
+		],
 	},
 };

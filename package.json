@@ -21,7 +21,7 @@
     "url": "git+https://github.com/lmahistre/hexconverter.git"
   },
   "author": "Lionel Mahistre",
-  "license": "MIT",
+  "license": "MPL",
   "bugs": {
     "url": "https://github.com/lmahistre/hexconverter/issues"
   },
@@ -39,6 +39,7 @@
     "node-watch": "^0.5.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "sharp": "^0.25.4",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4"
   },

@@ -1,0 +1,5 @@
+{
+  "start_url": "https://lmahistre.github.io/app/measure-converter/",
+  "display": "standalone",
+  "scope": "/app/measure-converter"
+}
