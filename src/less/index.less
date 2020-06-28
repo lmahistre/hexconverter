@@ -1,5 +1,8 @@
+@normalFontFamily : font-family: Helvetica, sans-serif, Arial;
+@monospaceFontFamily : SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+
 body {
-	font-family: Helvetica, sans-serif, Arial;
+	font-family: @normalFontFamily;
 	font-size: 14px;
 	background-color: #EEE;
 	max-width: 320px;
@@ -12,7 +15,7 @@ body {
 		padding: 4px 4px;
 
 		&.label {
-			font-family: Helvetica, sans-serif, Arial;
+			font-family: @normalFontFamily;
 			font-size: 14px;
 			width: 30px;
 			text-align: left;
@@ -28,7 +31,7 @@ body {
 			input {
 				width: 100%;
 				text-align: right;
-				font-family: Helvetica, sans-serif, Arial;
+				font-family: @normalFontFamily;
 				font-size: 14px;
 				border-color: #DDD;
 				border-width: 1px;
@@ -36,6 +39,9 @@ body {
 				border-radius: 4px;
 				padding: 2px 4px;
 				display: block;
+				&.code {
+					font-family: @monospaceFontFamily;
+				}
 			}
 			div.input-container {
 				width: 100%;

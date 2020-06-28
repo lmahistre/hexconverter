@@ -24,7 +24,6 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="decimal"
 										placeholder={"Decimal"}
 										className="large"
 										onChange={props.handleChange}
@@ -42,7 +41,6 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="hexadecimal"
 										placeholder={"Hexadecimal"}
 										className="large"
 										onChange={props.handleChange}
@@ -59,7 +57,6 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="binary"
 										placeholder={"Binary"}
 										className="large"
 										onChange={props.handleChange}
@@ -76,7 +73,6 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="octal"
 										placeholder={"Octal"}
 										className="large"
 										onChange={props.handleChange}
@@ -93,7 +89,6 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
-										id="base256"
 										placeholder={"Base 256 / RGB"}
 										className="large"
 										onChange={props.handleChange}
@@ -111,12 +106,22 @@ class Vue extends React.Component {
 								<div className="input-container">
 									<div id="color_name" className="medium">{props.colorName}</div>
 									<div
-										id="color-indicator"
 										className="color-indicator"
 										style={ props.color ? {
 											backgroundColor : '#'+props.color,
 										} : {} }
 									>&nbsp;</div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td className="label">
+								<label className="short">{"ASCII"}</label>
+								<label className="long">{"ASCII"}</label>
+							</td>
+							<td className="input">
+								<div className="input-container">
+									<input className="code" value={props.ascii} />
 								</div>
 							</td>
 						</tr>

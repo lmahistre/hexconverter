@@ -1,6 +1,5 @@
 const tools = require('./tools.js');
 
-
 exports.convertBinToOct = function(bin) {
 	let tb = bin;
 	let outArray = [];
@@ -10,7 +9,6 @@ exports.convertBinToOct = function(bin) {
 	}
 	return outArray.join('');
 }
-
 
 exports.convertBinToHex = function(bin) {
 	let tb = bin;
@@ -22,7 +20,6 @@ exports.convertBinToHex = function(bin) {
 	return outArray.join('');
 }
 
-
 exports.convertHexToBin = function(hex) {
 	let bin = '';
 	for (let i=0; i<hex.length; i++) {
@@ -31,7 +28,6 @@ exports.convertHexToBin = function(hex) {
 	bin = tools.trim0(bin);
 	return bin;
 }
-
 
 exports.convertBinTo256 = function(bin) {
 	let tb = bin;
@@ -42,7 +38,6 @@ exports.convertBinTo256 = function(bin) {
 	}
 	return outArray.join(',');
 }
-
 
 exports.convertDecToBin = function(dec) {
 	let inp = ''+dec;
@@ -56,7 +51,6 @@ exports.convertDecToBin = function(dec) {
 	return bin;
 }
 
-
 exports.convertBinToDec = function(bin) {
 	let dec = '';
 	for (let i=0; i<bin.length; i++) {
@@ -68,7 +62,6 @@ exports.convertBinToDec = function(bin) {
 	return dec;
 }
 
-
 exports.convertDecToHex = function(dec) {
 	var hex = '';
 	while (dec > 15) {
@@ -78,7 +71,6 @@ exports.convertDecToHex = function(dec) {
 	hex = tools.decToHex(dec)+hex;
 	return hex;
 }
-
 
 exports.convertDecToOct = function(dec) {
 	let oct = '';
@@ -91,7 +83,6 @@ exports.convertDecToOct = function(dec) {
 	return oct;
 }
 
-
 exports.convertOctToBin = function(oct) {
 	let bin = '';
 	for (let i=0; i<oct.length; i++) {
@@ -101,7 +92,6 @@ exports.convertOctToBin = function(oct) {
 	return bin;
 }
 
-
 exports.convert256ToBin = function(tfs) {
 	let bin = '';
 	const aTfs = tfs.split(',');
@@ -110,4 +100,12 @@ exports.convert256ToBin = function(tfs) {
 	}
 	bin = tools.trim0(bin);
 	return bin;
+}
+
+exports.convert256ToAscii = function(inp) {
+	const parts = inp.split(',').map(function(part) {
+		return String.fromCharCode(parseInt(part));
+	});
+	console.log(parts)
+	return parts.join('');
 }

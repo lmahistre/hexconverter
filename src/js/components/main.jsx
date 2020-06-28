@@ -21,6 +21,7 @@ class Main extends React.Component {
 				octal : null,
 				color : null,
 				colorName : null,
+				ascii : null,
 			}
 		}
 		this.showNewWindow = location.href.indexOf('#') === -1 && 'undefined' !== typeof browser;
@@ -59,6 +60,7 @@ class Main extends React.Component {
 			base256={this.state.base256}
 			colorName={this.state.colorName}
 			color={this.state.color}
+			ascii={this.state.ascii}
 			openNewWindow={this.openNewWindow.bind(this)}
 			showNewWindow={this.showNewWindow}
 		/>;

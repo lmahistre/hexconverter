@@ -11,6 +11,7 @@ module.exports = function(input, type) {
 		out.hexadecimal = converter.convertBinToHex(out.binary);
 		out.octal = converter.convertBinToOct(out.binary);
 		out.base256 = converter.convertBinTo256(out.binary);
+		out.ascii = converter.convert256ToAscii(out.base256);
 	}
 	else if (type == 'hexadecimal') {
 		out.hexadecimal = validate.hexadecimal(input);
@@ -18,6 +19,7 @@ module.exports = function(input, type) {
 		out.decimal = converter.convertBinToDec(out.binary);
 		out.octal = converter.convertBinToOct(out.binary);
 		out.base256 = converter.convertBinTo256(out.binary);
+		out.ascii = converter.convert256ToAscii(out.base256);
 	}
 	else if (type == 'binary') {
 		out.binary = validate.binary(input);
@@ -25,6 +27,7 @@ module.exports = function(input, type) {
 		out.hexadecimal = converter.convertBinToHex(out.binary);
 		out.octal = converter.convertBinToOct(out.binary);
 		out.base256 = converter.convertBinTo256(out.binary);
+		out.ascii = converter.convert256ToAscii(out.base256);
 	}
 	else if (type == 'octal') {
 		out.octal = validate.octal(input);
@@ -32,6 +35,7 @@ module.exports = function(input, type) {
 		out.decimal = converter.convertBinToDec(out.binary);
 		out.hexadecimal = converter.convertBinToHex(out.binary);
 		out.base256 = converter.convertBinTo256(out.binary);
+		out.ascii = converter.convert256ToAscii(out.base256);
 	}
 	else if (type == 'base256') {
 		out.base256 = validate.base256(input);
@@ -39,6 +43,7 @@ module.exports = function(input, type) {
 		out.decimal = converter.convertBinToDec(out.binary);
 		out.hexadecimal = converter.convertBinToHex(out.binary);
 		out.octal = converter.convertBinToOct(out.binary);
+		out.ascii = converter.convert256ToAscii(out.base256);
 	}
 	else {
 		return;
