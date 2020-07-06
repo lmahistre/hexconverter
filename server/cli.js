@@ -17,7 +17,11 @@ exports.test = function(args) {
 
 
 exports.dev = function(args) {
-	tasks.jsSite().then(tasks.cssSite);
+	tasks.jsSite()
+		.then(tasks.cssSite)
+		.then(tasks.manifestSite)
+		.then(tasks.htmlSite)
+		.then(tasks.images);
 }
 
 /**

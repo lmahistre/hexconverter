@@ -20,10 +20,9 @@ const css = function(conf) {
 					paths: [conf.inputFolder+'/'],
 					filename: './'+conf.inputFilename,
 					compress: false,
-				},
-				function (e, output) {
+				}, function (e, output) {
 					if (e) {
-						resolve();
+						reject(e);
 					}
 					else {
 						fs.writeFile(conf.outputFolder+'/'+conf.outputFilename, output.css, {
@@ -131,18 +130,44 @@ exports.test = function(args) {
 	});
 }
 
-exports.images = function() {
+// exports.images = function() {
+// 	const sharp = require('sharp');
+
+// 	return new Promise(function(resolve, reject) {
+// 		if (!fs.existsSync('./public/img')) {
+// 			fs.mkdirSync('./public/img');
+// 		}
+// 		if (!fs.existsSync('./addon/img')) {
+// 			fs.mkdirSync('./addon/img');
+// 		}
+
+// 		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/addon/img/new_window.png');
+// 		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/public/img/new_window.png');
+
+// 		const formats = config.app.iconFormats;
+
+// 		Promise.all(formats.map(function(format) {
+// 			return sharp(baseDir+'/src/img/logo-512.png')
+// 			.resize(format)
+// 			.toFile(baseDir+'/addon/img/logo-'+format+'.png');
+// 		})).then(function() {
+// 			for (let i=0; i<formats.length; i++) {
+// 				fs.copyFileSync(baseDir+'/addon/img/logo-'+formats[i]+'.png', baseDir+'/public/img/logo-'+formats[i]+'.png');
+// 			}
+
+// 			resolve('Images generated successfully');
+// 		});
+// 	});
+// }
+
+exports.imagesSite = function() {
 	const sharp = require('sharp');
 
 	return new Promise(function(resolve, reject) {
 		if (!fs.existsSync('./public/img')) {
 			fs.mkdirSync('./public/img');
 		}
-		if (!fs.existsSync('./addon/img')) {
-			fs.mkdirSync('./addon/img');
-		}
 
-		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/addon/img/new_window.png');
 		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/public/img/new_window.png');
 
 		const formats = config.app.iconFormats;
@@ -150,16 +175,31 @@ exports.images = function() {
 		Promise.all(formats.map(function(format) {
 			return sharp(baseDir+'/src/img/logo-512.png')
 			.resize(format)
-			.toFile(baseDir+'/addon/img/logo-'+format+'.png')
-			.catch(function(error) {
-				reject(error);
-			});
+			.toFile(baseDir+'/public/img/logo-'+format+'.png');
 		})).then(function() {
-			for (let i=0; i<formats.length; i++) {
-				fs.copyFileSync(baseDir+'/addon/img/logo-'+formats[i]+'.png', baseDir+'/public/img/logo-'+formats[i]+'.png');
-			}
+			resolve('Images for site generated successfully');
+		});
+	});
+}
 
-			resolve('Images generated successfully');
+exports.imagesAddon = function() {
+	const sharp = require('sharp');
+
+	return new Promise(function(resolve, reject) {
+		if (!fs.existsSync('./addon/img')) {
+			fs.mkdirSync('./addon/img');
+		}
+
+		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/addon/img/new_window.png');
+
+		const formats = config.app.iconFormats;
+
+		Promise.all(formats.map(function(format) {
+			return sharp(baseDir+'/src/img/logo-512.png')
+			.resize(format)
+			.toFile(baseDir+'/addon/img/logo-'+format+'.png');
+		})).then(function() {
+			resolve('Images for addon generated successfully');
 		});
 	});
 }
