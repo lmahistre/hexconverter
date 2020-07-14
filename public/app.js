@@ -995,7 +995,7 @@ function (_React$Component) {
   _createClass(Main, [{
     key: "handleChange",
     value: function handleChange(event) {
-      var origin = event.target.attributes.id.value;
+      var origin = event.target.attributes.name.value;
       var inputValue = event.target.value;
       this.setState(compute(inputValue, origin));
     }
@@ -1004,8 +1004,8 @@ function (_React$Component) {
     value: function openNewWindow(event) {
       try {
         var creating = browser.windows.create({
-          height: 260,
-          width: 340,
+          height: 270,
+          width: 360,
           url: 'index.html#' + this.state.hexadecimal,
           type: 'popup'
         });
@@ -1048,7 +1048,7 @@ const colorsByCode = __webpack_require__(3);
 module.exports = function(input, type) {
 	const out = {};
 
-	if (type == 'decimal') {
+	if (type === 'decimal') {
 		out.decimal = validate.decimal(input);
 		out.binary = converter.convertDecToBin(out.decimal);
 		out.hexadecimal = converter.convertBinToHex(out.binary);
@@ -1056,7 +1056,7 @@ module.exports = function(input, type) {
 		out.base256 = converter.convertBinTo256(out.binary);
 		out.ascii = converter.convert256ToAscii(out.base256);
 	}
-	else if (type == 'hexadecimal') {
+	else if (type === 'hexadecimal') {
 		out.hexadecimal = validate.hexadecimal(input);
 		out.binary = converter.convertHexToBin(out.hexadecimal);
 		out.decimal = converter.convertBinToDec(out.binary);
@@ -1064,7 +1064,7 @@ module.exports = function(input, type) {
 		out.base256 = converter.convertBinTo256(out.binary);
 		out.ascii = converter.convert256ToAscii(out.base256);
 	}
-	else if (type == 'binary') {
+	else if (type === 'binary') {
 		out.binary = validate.binary(input);
 		out.decimal = converter.convertBinToDec(out.binary);
 		out.hexadecimal = converter.convertBinToHex(out.binary);
@@ -1072,7 +1072,7 @@ module.exports = function(input, type) {
 		out.base256 = converter.convertBinTo256(out.binary);
 		out.ascii = converter.convert256ToAscii(out.base256);
 	}
-	else if (type == 'octal') {
+	else if (type === 'octal') {
 		out.octal = validate.octal(input);
 		out.binary = converter.convertOctToBin(out.octal);
 		out.decimal = converter.convertBinToDec(out.binary);
@@ -1080,13 +1080,21 @@ module.exports = function(input, type) {
 		out.base256 = converter.convertBinTo256(out.binary);
 		out.ascii = converter.convert256ToAscii(out.base256);
 	}
-	else if (type == 'base256') {
+	else if (type === 'base256') {
 		out.base256 = validate.base256(input);
 		out.binary = converter.convert256ToBin(out.base256);
 		out.decimal = converter.convertBinToDec(out.binary);
 		out.hexadecimal = converter.convertBinToHex(out.binary);
 		out.octal = converter.convertBinToOct(out.binary);
 		out.ascii = converter.convert256ToAscii(out.base256);
+	}
+	else if (type === 'ascii') {
+		out.ascii = input;
+		out.base256 = converter.convertAsciiTo256(out.ascii);
+		out.binary = converter.convert256ToBin(out.base256);
+		out.decimal = converter.convertBinToDec(out.binary);
+		out.hexadecimal = converter.convertBinToHex(out.binary);
+		out.octal = converter.convertBinToOct(out.binary);
 	}
 	else {
 		return;
@@ -1215,10 +1223,19 @@ exports.convert256ToBin = function(tfs) {
 
 exports.convert256ToAscii = function(inp) {
 	const parts = inp.split(',').map(function(part) {
-		return String.fromCharCode(parseInt(part));
-	});
-	console.log(parts)
+		if (part !== '') {
+			return String.fromCharCode(parseInt(part));
+		}
+	}).filter(e => typeof e !== 'undefined');
 	return parts.join('');
+}
+
+exports.convertAsciiTo256 = function(inp) {
+	const base256 = [];
+	for (let i=0; i<inp.length; i++) {
+		base256.push(inp.charCodeAt(i));
+	}
+	return base256.join(',');
 }
 
 
@@ -1321,6 +1338,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "input-container"
       }, React.createElement("input", {
+        name: "decimal",
         placeholder: "Decimal",
         className: "large",
         onChange: props.handleChange,
@@ -1338,6 +1356,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "input-container"
       }, React.createElement("input", {
+        name: "hexadecimal",
         placeholder: "Hexadecimal",
         className: "large",
         onChange: props.handleChange,
@@ -1354,6 +1373,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "input-container"
       }, React.createElement("input", {
+        name: "binary",
         placeholder: "Binary",
         className: "large",
         onChange: props.handleChange,
@@ -1370,6 +1390,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "input-container"
       }, React.createElement("input", {
+        name: "octal",
         placeholder: "Octal",
         className: "large",
         onChange: props.handleChange,
@@ -1386,6 +1407,7 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "input-container"
       }, React.createElement("input", {
+        name: "base256",
         placeholder: "Base 256 / RGB",
         className: "large",
         onChange: props.handleChange,
@@ -1419,8 +1441,11 @@ function (_React$Component) {
       }, React.createElement("div", {
         className: "input-container"
       }, React.createElement("input", {
+        name: "ascii",
+        placeholder: "ASCII",
         className: "code",
-        value: props.ascii
+        value: props.ascii,
+        onChange: props.handleChange
       })))))), props.showNewWindow ? React.createElement("div", {
         className: "actions"
       }, React.createElement("a", {

@@ -24,6 +24,7 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
+										name="decimal"
 										placeholder={"Decimal"}
 										className="large"
 										onChange={props.handleChange}
@@ -41,6 +42,7 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
+										name="hexadecimal"
 										placeholder={"Hexadecimal"}
 										className="large"
 										onChange={props.handleChange}
@@ -57,6 +59,7 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
+										name="binary"
 										placeholder={"Binary"}
 										className="large"
 										onChange={props.handleChange}
@@ -73,6 +76,7 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
+										name="octal"
 										placeholder={"Octal"}
 										className="large"
 										onChange={props.handleChange}
@@ -89,6 +93,7 @@ class Vue extends React.Component {
 							<td className="input">
 								<div className="input-container">
 									<input
+										name="base256"
 										placeholder={"Base 256 / RGB"}
 										className="large"
 										onChange={props.handleChange}
@@ -121,7 +126,13 @@ class Vue extends React.Component {
 							</td>
 							<td className="input">
 								<div className="input-container">
-									<input className="code" value={props.ascii} />
+									<input
+										name="ascii"
+										placeholder="ASCII"
+										className="code"
+										value={props.ascii}
+										onChange={props.handleChange}
+									/>
 								</div>
 							</td>
 						</tr>

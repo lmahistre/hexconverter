@@ -29,7 +29,7 @@ class Main extends React.Component {
 
 
 	handleChange (event) {
-		const origin = event.target.attributes.id.value;
+		const origin = event.target.attributes.name.value;
 		const inputValue = event.target.value;
 		this.setState(compute(inputValue, origin));
 	}
@@ -38,8 +38,8 @@ class Main extends React.Component {
 	openNewWindow (event) {
 		try {
 			const creating = browser.windows.create({
-				height : 260,
-				width : 340,
+				height : 270,
+				width : 360,
 				url : 'index.html#'+this.state.hexadecimal,
 				type : 'popup',
 			});

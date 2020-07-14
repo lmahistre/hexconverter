@@ -61,13 +61,21 @@ exports.zip = function() {
 	});
 }
 
-// exports.images = function() {
-// 	return compiler.images().then(function(result) {
-// 		console.log(chalk.green('Images have been generated'));
-// 	}).catch(function (error) {
-// 		console.log(chalk.red(error));
-// 	});
-// }
+exports.imagesSite = function() {
+	return compiler.imagesSite().then(function(result) {
+		console.log(chalk.green('Images have been generated'));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
+
+exports.imagesAddon = function() {
+	return compiler.imagesAddon().then(function(result) {
+		console.log(chalk.green('Images have been generated'));
+	}).catch(function (error) {
+		console.log(chalk.red(error));
+	});
+}
 
 exports.manifestAddon = function() {
 	return compiler.manifestAddon().then(function(result) {

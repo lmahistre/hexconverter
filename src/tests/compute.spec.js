@@ -11,6 +11,7 @@ describe('compute', function() {
 			base256 : '4,126',
 			color: '00047E',
 			colorName : '',
+			ascii : "\u0004\u007E",
 		});
 	});
 
@@ -24,6 +25,7 @@ describe('compute', function() {
 			base256 : '4,126',
 			color: '00047E',
 			colorName : '',
+			ascii : "\u0004\u007E",
 		});
 	});
 
@@ -37,6 +39,7 @@ describe('compute', function() {
 			base256 : '4,126',
 			color: '00047E',
 			colorName : '',
+			ascii : "\u0004\u007E",
 		});
 	});
 
@@ -50,6 +53,7 @@ describe('compute', function() {
 			base256 : '4,126',
 			color: '00047E',
 			colorName : '',
+			ascii : "\u0004\u007E",
 		});
 	});
 
@@ -63,6 +67,21 @@ describe('compute', function() {
 			base256 : '4,126',
 			color: '00047E',
 			colorName : '',
+			ascii : "\u0004\u007E",
+		});
+	});
+
+	it ('type ascii', function() {
+		const c = compute('abc', 'ascii');
+		expect(c).toEqual({
+			decimal : '6382179',
+			hexadecimal : '616263',
+			binary : '11000010110001001100011',
+			octal : '30261143',
+			base256 : '97,98,99',
+			color: '616263',
+			colorName : '',
+			ascii : 'abc',
 		});
 	});
 });

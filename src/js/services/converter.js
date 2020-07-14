@@ -104,8 +104,17 @@ exports.convert256ToBin = function(tfs) {
 
 exports.convert256ToAscii = function(inp) {
 	const parts = inp.split(',').map(function(part) {
-		return String.fromCharCode(parseInt(part));
-	});
-	console.log(parts)
+		if (part !== '') {
+			return String.fromCharCode(parseInt(part));
+		}
+	}).filter(e => typeof e !== 'undefined');
 	return parts.join('');
+}
+
+exports.convertAsciiTo256 = function(inp) {
+	const base256 = [];
+	for (let i=0; i<inp.length; i++) {
+		base256.push(inp.charCodeAt(i));
+	}
+	return base256.join(',');
 }

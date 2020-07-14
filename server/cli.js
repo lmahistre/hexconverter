@@ -21,7 +21,7 @@ exports.dev = function(args) {
 		.then(tasks.cssSite)
 		.then(tasks.manifestSite)
 		.then(tasks.htmlSite)
-		.then(tasks.images);
+		.then(tasks.imagesSite);
 }
 
 /**
@@ -36,7 +36,8 @@ exports.build = function(args) {
 		.then(tasks.manifestSite)
 		.then(tasks.htmlAddon)
 		.then(tasks.htmlSite)
-		.then(tasks.images);
+		.then(tasks.imagesAddon)
+		.then(tasks.imagesSite);
 }
 
 exports.start = function(args) {
@@ -51,7 +52,7 @@ exports.publish = function(args) {
 		.then(tasks.cssAddon)
 		.then(tasks.manifestAddon)
 		.then(tasks.htmlAddon)
-		.then(tasks.images)
+		.then(tasks.imagesAddon)
 		.then(tasks.zip);
 }
 
