@@ -18,12 +18,13 @@ class Vue extends React.Component {
 					<tbody>
 						<tr>
 							<td className="label" title={"Decimal"}>
-								<label className="short">{"Dec"}</label>
-								<label className="long">{"Decimal"}</label>
+								<label for="decimal" className="short">{"Dec"}</label>
+								<label for="decimal" className="long">{"Decimal"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
+										id="decimal"
 										name="decimal"
 										placeholder={"Decimal"}
 										className="large"
@@ -36,12 +37,13 @@ class Vue extends React.Component {
 						</tr>
 						<tr>
 							<td className="label" title={"Hexadecimal"}>
-								<label className="short">{"Hex"}</label>
-								<label className="long">{"Hexadecimal"}</label>
+								<label for="hexadecimal" className="short">{"Hex"}</label>
+								<label for="hexadecimal" className="long">{"Hexadecimal"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
+										id="hexadecimal"
 										name="hexadecimal"
 										placeholder={"Hexadecimal"}
 										className="large"
@@ -53,12 +55,13 @@ class Vue extends React.Component {
 						</tr>
 						<tr>
 							<td className="label" title={"Binary"}>
-								<label className="short">{"Bin"}</label>
-								<label className="long">{"Binary"}</label>
+								<label for="binary" className="short">{"Bin"}</label>
+								<label for="binary" className="long">{"Binary"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
+										id="binary"
 										name="binary"
 										placeholder={"Binary"}
 										className="large"
@@ -70,12 +73,13 @@ class Vue extends React.Component {
 						</tr>
 						<tr>
 							<td className="label" title={"Octal"}>
-								<label className="short">{"Oct"}</label>
-								<label className="long">{"Octal"}</label>
+								<label for="octal" className="short">{"Oct"}</label>
+								<label for="octal" className="long">{"Octal"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
+										id="octal"
 										name="octal"
 										placeholder={"Octal"}
 										className="large"
@@ -87,12 +91,13 @@ class Vue extends React.Component {
 						</tr>
 						<tr>
 							<td className="label" title={"Base 256"}>
-								<label className="short">{"256"}</label>
-								<label className="long">{"Base 256"}</label>
+								<label for="base256" className="short">{"256"}</label>
+								<label for="base256" className="long">{"Base 256"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
+										id="base256"
 										name="base256"
 										placeholder={"Base 256 / RGB"}
 										className="large"
@@ -121,12 +126,13 @@ class Vue extends React.Component {
 						</tr>
 						<tr>
 							<td className="label">
-								<label className="short">{"ASCII"}</label>
-								<label className="long">{"ASCII"}</label>
+								<label for="ascii" className="short">{"ASCII"}</label>
+								<label for="ascii" className="long">{"ASCII"}</label>
 							</td>
 							<td className="input">
 								<div className="input-container">
 									<input
+										id="ascii"
 										name="ascii"
 										placeholder="ASCII"
 										className="code"

@@ -1,6 +1,6 @@
 # Hexconverter
 
-## 1.7.0
+## 1.7.0 (19/07/2020)
 
 * Separate build into two output folders: for web app and for addon
 * Conversion to ASCII characters

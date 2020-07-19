@@ -1,12 +1,12 @@
 const CACHE_NAME = 'hexconverter';
 
 const STATICS_TO_PRELOAD = [
-	'img/hexc-32.png',
-	'img/hexc-512.png',
+	'img/logo-32.png',
+	'img/logo-512.png',
 	'img/new_window.png',
 	'index.html',
-	'hexc.js',
-	'hexc.css',
+	'app.js',
+	'style.css',
 ];
 
 self.addEventListener('install', function (event) {
