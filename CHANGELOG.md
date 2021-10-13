@@ -32,3 +32,7 @@
 ## 1.2 (30/11/2017)
 
 * The converter can be open in another window
+
+## 1.8
+
+* Stop building the app as a website

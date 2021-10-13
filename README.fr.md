@@ -18,21 +18,19 @@ Installer d'abord les dépendances:
 
 `npm install`
 
-Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers générés sont dans ces deux dossiers :
-* `addon` contient les fichiers destinés à l'extension de Firefox. Ce dossier n'est pas présent sur le dépôt Git, son contenu est généré par les commandes `npm run build` et `npm run publish`.
-* `public` contient les fichiers pour utiliser l'application comme une page web. Une partie de son contenu est sur le dépôt Git, le reste est généré par les commandes `npm run dev` et `npm run build`.
+Les fichiers source Javascript et LESS sont dans le dossier `src`. Les fichiers générés sont dans le dossier `addon`. Il contient les fichiers destinés à l'extension de Firefox. Ce dossier n'est pas présent sur le dépôt Git, son contenu est généré par les commandes `npm run build` et `npm run publish`.
 
-Il y a 2 fichiers générés : `app.js` et `style.css`.
-
-Pour compiler les fichiers Javascript et CSS et générer les images et les manifestes :
-
-`npm run dev`
+Les fichiers générés sont :
+* `app.js`
+* `style.css` 
+* `index.html`
+* `manifest.json`
 
 Pour lancer les tests unitaires :
 
 `npm test`
 
-Pour construire les fichiers Javascript et CSS et générer les images et les manifestes :
+Pour construire les fichiers Javascript et CSS et générer les images et le manifeste :
 
 `npm run build`
 

@@ -7,37 +7,22 @@ exports.css = function (args) {
 }
 
 exports.js = function (args) {
-	tasks.jsSite();
+	tasks.jsAddon();
 }
-
 
 exports.test = function(args) {
 	tasks.test();
-}
-
-
-exports.dev = function(args) {
-	tasks.jsSite()
-		.then(tasks.cssSite)
-		.then(tasks.manifestSite)
-		.then(tasks.htmlSite)
-		.then(tasks.imagesSite);
 }
 
 /**
  * Builds the app for addon and site
  */
 exports.build = function(args) {
-	tasks.jsSite()
-		.then(tasks.cssSite)
-		.then(tasks.jsAddon)
-		.then(tasks.cssAddon)
-		.then(tasks.manifestAddon)
-		.then(tasks.manifestSite)
-		.then(tasks.htmlAddon)
-		.then(tasks.htmlSite)
-		.then(tasks.imagesAddon)
-		.then(tasks.imagesSite);
+	tasks.jsAddon()
+	.then(tasks.cssAddon)
+	.then(tasks.manifestAddon)
+	.then(tasks.htmlAddon)
+	.then(tasks.imagesAddon);
 }
 
 exports.start = function(args) {
@@ -49,11 +34,11 @@ exports.start = function(args) {
  */
 exports.publish = function(args) {
 	tasks.jsAddon()
-		.then(tasks.cssAddon)
-		.then(tasks.manifestAddon)
-		.then(tasks.htmlAddon)
-		.then(tasks.imagesAddon)
-		.then(tasks.zip);
+	.then(tasks.cssAddon)
+	.then(tasks.manifestAddon)
+	.then(tasks.htmlAddon)
+	.then(tasks.imagesAddon)
+	.then(tasks.zip);
 }
 
 exports.watch = function(args) {
@@ -63,7 +48,7 @@ exports.watch = function(args) {
 		recursive: true 
 	}, function(evt, name) {
 		console.log('%s changed.', name);
-		tasks.jsSite().then(tasks.cssSite);
+		tasks.jsAddon().then(tasks.cssAddon);
 	});
 }
 
