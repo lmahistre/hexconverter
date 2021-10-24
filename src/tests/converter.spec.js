@@ -1,4 +1,4 @@
-const converter = require('../js/services/converter.js');
+import * as converter from '../js/services/converter.js';
 
 describe ('converter', function() {
 

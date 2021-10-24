@@ -1,13 +1,13 @@
 const fs = require('fs');
 const archiver = require('archiver');
-const package = require('../package.json');
+const packageJson = require('../package.json');
 
 exports.addon = function() {
-	return new Promise(function(resolve, reject) {
-		const output = fs.createWriteStream(__dirname + '/../'+package.name+'-'+package.version+'.zip');
+	return new Promise(function(resolve) {
+		const output = fs.createWriteStream(__dirname + '/../'+packageJson.name+'-'+packageJson.version+'.zip');
 		const archive = archiver('zip', {
-			zlib: { 
-				level: 9 
+			zlib: {
+				level: 9,
 			},
 		});
 		let msg = '';
@@ -23,13 +23,13 @@ exports.addon = function() {
 	});
 }
 
-exports.source = function(callback) {
+exports.source = function() {
 	const config = require('./config');
 
-	return new Promise(function(resolve, reject) {
-		const output = fs.createWriteStream(__dirname + '/../'+package.name+'-'+package.version+'.src.zip');
+	return new Promise(function(resolve) {
+		const output = fs.createWriteStream(__dirname + '/../'+packageJson.name+'-'+packageJson.version+'.src.zip');
 		const archive = archiver('zip', {
-			zlib: { 
+			zlib: {
 				level: 9,
 			},
 		});
@@ -48,9 +48,9 @@ exports.source = function(callback) {
 
 		for (let i=0; i<config.zipSource.files.length; i++) {
 			const file1 = __dirname + '/../'+config.zipSource.files[i];
-			archive.append(fs.createReadStream(file1), { 
-				name: config.zipSource.files[i], 
-			});	
+			archive.append(fs.createReadStream(file1), {
+				name: config.zipSource.files[i],
+			});
 		}
 
 		archive.finalize();

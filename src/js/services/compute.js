@@ -1,8 +1,8 @@
-const converter = require('./converter.js');
-const validate = require('./validate.js');
-const colorsByCode = require('../services/colors.js');
+import * as converter from './converter';
+import * as validate from './validate';
+import colorsByCode from '../services/colors';
 
-module.exports = function(input, type) {
+export default function(input, type) {
 	const out = {};
 
 	if (type === 'decimal') {

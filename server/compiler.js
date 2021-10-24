@@ -9,9 +9,9 @@ const css = function(conf) {
 	const less = require('less');
 	return new Promise(function(resolve, reject) {
 		try {
-			fs.readFile(conf.inputFolder+'/'+conf.inputFilename, { 
-				encoding: 'utf8' 
-			}, 
+			fs.readFile(conf.inputFolder+'/'+conf.inputFilename, {
+				encoding: 'utf8',
+			},
 			function(err, data) {
 				if (err) {
 					reject(err);
@@ -26,7 +26,7 @@ const css = function(conf) {
 					}
 					else {
 						fs.writeFile(conf.outputFolder+'/'+conf.outputFilename, output.css, {
-							flag:'w+', 
+							flag:'w+',
 							encoding:'utf8'
 						},
 						function(err) {
@@ -105,27 +105,10 @@ exports.start = function (args) {
 	});
 }
 
-exports.test = function(args) {
-	return new Promise(function (resolve, reject) {
-		const Jasmine = require('jasmine');
-		const jasmine = new Jasmine();
-		jasmine.loadConfig(config.test);
-		jasmine.onComplete(function(passed) {
-			if(passed) {
-				resolve('All tests pass');
-			}
-			else {
-				reject('At least one test failed');
-			}
-		});
-		jasmine.execute();
-	});
-}
-
 exports.imagesAddon = function() {
 	const sharp = require('sharp');
 
-	return new Promise(function(resolve, reject) {
+	return new Promise(function(resolve) {
 		if (!fs.existsSync('./addon/img')) {
 			fs.mkdirSync('./addon/img');
 		}
@@ -145,7 +128,7 @@ exports.imagesAddon = function() {
 }
 
 exports.htmlAddon = function() {
-	return new Promise(function(resolve, reject) {
+	return new Promise(function(resolve) {
 		const html = require(baseDir+'/src/static/html')(config.app);
 		fs.writeFileSync(baseDir+'/addon/index.html', html);
 		resolve('HTML generated for addon');
@@ -153,7 +136,7 @@ exports.htmlAddon = function() {
 }
 
 exports.manifestAddon = function() {
-	return new Promise(function (resolve, reject) {
+	return new Promise(function (resolve) {
 		const manifest = require(baseDir+'/src/static/manifest');
 		fs.writeFileSync(baseDir+'/addon/manifest.json', JSON.stringify(manifest, null, '\t'));
 		resolve('Manifest generated for addon');

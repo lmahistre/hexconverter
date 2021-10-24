@@ -1,5 +1,4 @@
-
-exports.intval = function(val) {
+export function intval(val) {
 	let a = parseInt(val);
 	if (isNaN(a)) {
 		a = 0;
@@ -7,16 +6,14 @@ exports.intval = function(val) {
 	return a;
 }
 
-
-exports.modulo2 = function(dec) {
+export function modulo2(dec) {
 	const inp = ''+dec;
 	const len = inp.length;
 	const mod = parseInt(inp[(len-1)])%2;
 	return mod;
 }
 
-
-exports.divBy2 = function(dec) {
+export function divBy2(dec) {
 	const inp = ''+dec;
 	let aOut = [];
 	for (let i = inp.length - 1; i >= 0; i--) {
@@ -26,11 +23,10 @@ exports.divBy2 = function(dec) {
 		}
 		aOut[i] = parseInt(inp[i]/2);
 	}
-	return exports.trim0(aOut.join(''));
+	return trim0(aOut.join(''));
 }
 
-
-exports.multiplyBy2 = function(dec) {
+export function multiplyBy2(dec) {
 	const inp = ''+dec;
 	let aOut = [];
 	for (let i=0; i<=inp.length; i++) {
@@ -44,11 +40,10 @@ exports.multiplyBy2 = function(dec) {
 			aOut[i] += 1;
 		}
 	}
-	return exports.trim0(aOut.join(''));
+	return trim0(aOut.join(''));
 }
 
-
-exports.add1 = function(dec) {
+export function add1(dec) {
 	const inp = ''+dec;
 	if (inp.length > 0) {
 		let aOut = [];
@@ -67,7 +62,7 @@ exports.add1 = function(dec) {
 				aOut[i] += 1;
 			}
 		}
-		return exports.trim0(aOut.join(''));
+		return trim0(aOut.join(''));
 	}
 	else {
 		return '1';
@@ -75,7 +70,7 @@ exports.add1 = function(dec) {
 }
 
 
-exports.higherThan1 = function(dec) {
+export function higherThan1(dec) {
 	const inp = ''+dec;
 	if (inp.length > 1) {
 		return true;
@@ -86,20 +81,18 @@ exports.higherThan1 = function(dec) {
 	return false;
 }
 
-
-exports.toBin = function(dec) {
+export function toBin(dec) {
 	let inp = ''+dec;
 	let bin = '';
-	while (exports.higherThan1(inp)) {
-		bin = (exports.modulo2(inp)) + bin;
-		inp = exports.divBy2(inp);
+	while (higherThan1(inp)) {
+		bin = (modulo2(inp)) + bin;
+		inp = divBy2(inp);
 	}
 	bin = inp+bin;
 	return bin;
 }
 
-
-exports.decToHex = function(val) {
+export function decToHex(val) {
 	var chars = {
 		10 : 'A',
 		11 : 'B',
@@ -116,8 +109,7 @@ exports.decToHex = function(val) {
 	}
 }
 
-
-exports.hexToDec = function(hex) {
+export function hexToDec(hex) {
 	var htd = {
 		'A' : 10,
 		'B' : 11,
@@ -128,44 +120,39 @@ exports.hexToDec = function(hex) {
 	};
 	for (var i = 0; i < 10; i++) {
 		htd[''+i] = i;
-	};
+	}
 	return htd[hex];
 }
 
-
-exports.decToBin = function(dec) {
+export function decToBin(dec) {
 	let inp = ''+dec;
 	let bin = '';
-	while (exports.higherThan1(inp)) {
-		bin = (exports.modulo2(inp)) + bin;
-		inp = exports.divBy2(inp);
+	while (higherThan1(inp)) {
+		bin = (modulo2(inp)) + bin;
+		inp = divBy2(inp);
 	}
 	bin = inp+bin;
 	return bin;
 }
 
-
-exports.binToDec = function(bin) {
+export function binToDec(bin) {
 	let dec = 0;
 	let exp = 1;
 	for (var i = bin.length - 1; i >= 0; i--) {
 		dec += exp*bin[i];
 		exp *= 2;
-	};
+	}
 	return dec;
 }
 
-
-exports.binToHex = function(bin) {
-	return ''+exports.decToHex(exports.binToDec(bin));
+export function binToHex(bin) {
+	return ''+ decToHex(binToDec(bin));
 }
 
-
-exports.hexToBin = function(hex) {
-	return (''+exports.decToBin(exports.hexToDec(hex))).padStart(4, '0');
+export function hexToBin(hex) {
+	return (''+ decToBin(hexToDec(hex))).padStart(4, '0');
 }
 
-
-exports.trim0 = function(str) {
+export function trim0(str) {
 	return str.replace(/^0+/gm,'');
 }

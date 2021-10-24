@@ -1,70 +1,48 @@
-const React = require('react');
+import React from 'react';
 
-const compute = require('../services/compute.js');
-const colorsByCode = require('../services/colors.js');
+import compute from '../services/compute';
 
-const Vue = require('./vue.jsx');
+import Vue from './vue';
 
-class Main extends React.Component {
+export default function Main({
+	hexadecimal,
+}) {
+	const [state, setState] = React.useState(hexadecimal ? compute(hexadecimal, 'hexadecimal') : null);
+	const showNewWindow = location.href.indexOf('#') === -1 && 'undefined' !== typeof browser;
 
-	constructor (props) {
-		super();
-		if (props.hexadecimal) {
-			this.state = compute(props.hexadecimal, 'hexadecimal');
-		}
-		else {
-			this.state = {
-				base256: null,
-				binary: null,
-				decimal: null,
-				hexadecimal : null,
-				octal : null,
-				color : null,
-				colorName : null,
-				ascii : null,
-			}
-		}
-		this.showNewWindow = location.href.indexOf('#') === -1 && 'undefined' !== typeof browser;
+	const handleChange = function({target}) {
+		const origin = target.attributes.name.value;
+		const inputValue = target.value;
+		setState(compute(inputValue, origin));
 	}
 
-
-	handleChange (event) {
-		const origin = event.target.attributes.name.value;
-		const inputValue = event.target.value;
-		this.setState(compute(inputValue, origin));
-	}
-
-
-	openNewWindow (event) {
+	const openNewWindow = function() {
 		try {
-			const creating = browser.windows.create({
+			browser.windows.create({
 				height : 270,
 				width : 360,
-				url : 'index.html#'+this.state.hexadecimal,
+				url : 'index.html#'+state.hexadecimal,
 				type : 'popup',
 			});
 		}
 		catch (error) {
-			alert(error.message);
+			window.alert(error.message);
 		}
 	}
 
-
-	render () {
-		return <Vue
-			handleChange={this.handleChange.bind(this)}
-			decimal={this.state.decimal}
-			hexadecimal={this.state.hexadecimal}
-			binary={this.state.binary}
-			octal={this.state.octal}
-			base256={this.state.base256}
-			colorName={this.state.colorName}
-			color={this.state.color}
-			ascii={this.state.ascii}
-			openNewWindow={this.openNewWindow.bind(this)}
-			showNewWindow={this.showNewWindow}
-		/>;
-	}
+	return  (
+		<Vue
+			handleChange={handleChange}
+			decimal={state.decimal}
+			hexadecimal={state.hexadecimal}
+			binary={state.binary}
+			octal={state.octal}
+			base256={state.base256}
+			colorName={state.colorName}
+			color={state.color}
+			ascii={state.ascii}
+			openNewWindow={openNewWindow}
+			showNewWindow={showNewWindow}
+		/>
+	);
 }
-
-module.exports = Main;

@@ -1,4 +1,4 @@
-const validate = require('../js/services/validate.js');
+import * as validate from '../js/services/validate.js';
 
 describe ('validate', function() {
 	it ('decimal', function() {

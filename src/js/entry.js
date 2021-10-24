@@ -1,6 +1,6 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const Main = require('./components/main.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Main from './components/main';
 
 window.onload = function() {
 	document.title = 'Hexconverter';

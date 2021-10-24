@@ -7,13 +7,13 @@
     "test": "src/tests"
   },
   "scripts": {
-    "test": "node build.js test",
+    "test": "jest",
     "build": "node build.js build",
-    "js": "node build.js js",
     "css": "node build.js css",
+    "js": "node build.js js",
+    "lint": "eslint server/ src/",
     "start": "node build.js start",
-    "publish": "node build.js publish",
-    "watch": "node build.js watch"
+    "publish": "node build.js publish"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,11 @@
     "url": "https://github.com/lmahistre/hexconverter/issues"
   },
   "homepage": "https://addons.mozilla.org/firefox/addon/hexconverter",
+  "dependencies": {
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.26.1",
+    "jest": "^27.3.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
@@ -33,9 +38,7 @@
     "babel-loader": "^8.2.2",
     "chalk": "^4.1.2",
     "express": "^4.17.1",
-    "jasmine": "^3.9.0",
     "less": "^4.1.2",
-    "node-watch": "^0.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "sharp": "^0.29.1",
@@ -46,6 +49,68 @@
     "presets": [
       "@babel/env",
       "@babel/react"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es2021": true,
+      "jest": true,
+      "node": true,
+      "webextensions": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": [
+      "react"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.js",
+          "*.jsx"
+        ]
+      }
+    ],
+    "rules": {
+      "curly": "error",
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "no-console": [
+        "error",
+        {
+          "allow": [
+            "error",
+            "warn"
+          ]
+        }
+      ],
+      "no-empty": 0,
+      "no-trailing-spaces": "error",
+      "no-unused-vars": [
+        "error",
+        {
+          "ignoreRestSiblings": true
+        }
+      ],
+      "react/prop-types": 0
+    }
+  },
+  "jest": {
+    "testMatch": [
+      "**/src/tests/**/?(*.)(spec|test).js?(x)"
     ]
   }
 }

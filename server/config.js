@@ -24,16 +24,9 @@ module.exports = {
 		optimization : {
 			minimize : false,
 		},
-	},
-	test : {
-		spec_dir: 'src/tests',
-		spec_files: [
-			'tools.spec.js',
-			'validate.spec.js',
-			'converter.spec.js',
-			'compute.spec.js',
-		],
-		helpers: [],
+		resolve : {
+			extensions : ['.js', '.jsx',],
+		},
 	},
 	app : {
 		port : 3007,
@@ -54,7 +47,7 @@ module.exports = {
 		],
 		files : [
 			'.gitignore',
-			'.travis.yml',
+			'ci.yml',
 			'build.js',
 			'CHANGELOG.md',
 			'package.json',

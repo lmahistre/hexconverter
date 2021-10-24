@@ -1,23 +1,17 @@
 const tasks = require('./tasks.js');
-const config = require('./config.js');
-const chalk = require('chalk');
 
-exports.css = function (args) {
+exports.css = function () {
 	tasks.cssSite();
 }
 
-exports.js = function (args) {
+exports.js = function () {
 	tasks.jsAddon();
-}
-
-exports.test = function(args) {
-	tasks.test();
 }
 
 /**
  * Builds the app for addon and site
  */
-exports.build = function(args) {
+exports.build = function() {
 	tasks.jsAddon()
 	.then(tasks.cssAddon)
 	.then(tasks.manifestAddon)
@@ -32,7 +26,7 @@ exports.start = function(args) {
 /**
  * Generates 2 zip files for the addon
  */
-exports.publish = function(args) {
+exports.publish = function() {
 	tasks.jsAddon()
 	.then(tasks.cssAddon)
 	.then(tasks.manifestAddon)
@@ -41,22 +35,22 @@ exports.publish = function(args) {
 	.then(tasks.zip);
 }
 
-exports.watch = function(args) {
+exports.watch = function() {
 	const watch = require('node-watch');
-	console.log('Watching src');
-	watch('./src', { 
-		recursive: true 
+	process.stdout.write('\nWatching src');
+	watch('./src', {
+		recursive: true,
 	}, function(evt, name) {
-		console.log('%s changed.', name);
+		process.stdout.write('\n%s changed.', name);
 		tasks.jsAddon().then(tasks.cssAddon);
 	});
 }
 
-exports.images = function(args) {
+exports.images = function() {
 	tasks.images();
 }
 
 exports.version = function() {
-	const package = require('../package.json');
-	console.log(chalk.green('Version ' + package.version));
+	const packageJson = require('../package.json');
+	process.stdout.write('\nVersion ' + packageJson.version);
 }

@@ -1,6 +1,6 @@
-const tools = require('./tools.js');
+import * as tools from './tools.js';
 
-exports.convertBinToOct = function(bin) {
+export function convertBinToOct(bin) {
 	let tb = bin;
 	let outArray = [];
 	while (tb.length > 0) {
@@ -10,7 +10,7 @@ exports.convertBinToOct = function(bin) {
 	return outArray.join('');
 }
 
-exports.convertBinToHex = function(bin) {
+export function convertBinToHex(bin) {
 	let tb = bin;
 	let outArray = [];
 	while (tb.length > 0) {
@@ -20,7 +20,7 @@ exports.convertBinToHex = function(bin) {
 	return outArray.join('');
 }
 
-exports.convertHexToBin = function(hex) {
+export function convertHexToBin(hex) {
 	let bin = '';
 	for (let i=0; i<hex.length; i++) {
 		bin += tools.hexToBin(hex[i]);
@@ -29,7 +29,7 @@ exports.convertHexToBin = function(hex) {
 	return bin;
 }
 
-exports.convertBinTo256 = function(bin) {
+export function convertBinTo256(bin) {
 	let tb = bin;
 	let outArray = [];
 	while (tb.length > 0) {
@@ -39,7 +39,7 @@ exports.convertBinTo256 = function(bin) {
 	return outArray.join(',');
 }
 
-exports.convertDecToBin = function(dec) {
+export function convertDecToBin(dec) {
 	let inp = ''+dec;
 	let bin = '';
 	while (tools.higherThan1(inp)) {
@@ -51,7 +51,7 @@ exports.convertDecToBin = function(dec) {
 	return bin;
 }
 
-exports.convertBinToDec = function(bin) {
+export function convertBinToDec(bin) {
 	let dec = '';
 	for (let i=0; i<bin.length; i++) {
 		dec = tools.multiplyBy2(dec);
@@ -62,7 +62,7 @@ exports.convertBinToDec = function(bin) {
 	return dec;
 }
 
-exports.convertDecToHex = function(dec) {
+export function convertDecToHex(dec) {
 	var hex = '';
 	while (dec > 15) {
 		hex = tools.decToHex(dec % 16)+hex;
@@ -72,7 +72,7 @@ exports.convertDecToHex = function(dec) {
 	return hex;
 }
 
-exports.convertDecToOct = function(dec) {
+export function convertDecToOct(dec) {
 	let oct = '';
 	let decT = dec;
 	while (decT > 7) {
@@ -83,7 +83,7 @@ exports.convertDecToOct = function(dec) {
 	return oct;
 }
 
-exports.convertOctToBin = function(oct) {
+export function convertOctToBin(oct) {
 	let bin = '';
 	for (let i=0; i<oct.length; i++) {
 		bin += tools.decToBin(oct[i]).padStart(3, '0');
@@ -92,7 +92,7 @@ exports.convertOctToBin = function(oct) {
 	return bin;
 }
 
-exports.convert256ToBin = function(tfs) {
+export function convert256ToBin(tfs) {
 	let bin = '';
 	const aTfs = tfs.split(',');
 	for (let i=0; i<aTfs.length; i++) {
@@ -102,7 +102,7 @@ exports.convert256ToBin = function(tfs) {
 	return bin;
 }
 
-exports.convert256ToAscii = function(inp) {
+export function convert256ToAscii(inp) {
 	const parts = inp.split(',').map(function(part) {
 		if (part !== '') {
 			return String.fromCharCode(parseInt(part));
@@ -111,7 +111,7 @@ exports.convert256ToAscii = function(inp) {
 	return parts.join('');
 }
 
-exports.convertAsciiTo256 = function(inp) {
+export function convertAsciiTo256(inp) {
 	const base256 = [];
 	for (let i=0; i<inp.length; i++) {
 		base256.push(inp.charCodeAt(i));
