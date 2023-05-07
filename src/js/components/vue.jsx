@@ -10,6 +10,7 @@ export default function Vue({
 	handleChange,
 	hexadecimal,
 	octal,
+	clearValues,
 	openNewWindow,
 	showNewWindow,
 }) {
@@ -151,19 +152,25 @@ export default function Vue({
 					</tr>
 				</tbody>
 			</table>
-			{showNewWindow ?
-				<div className="actions">
-					<a href="#"
-						id="link_new_window"
-						className="action"
-						title={"New window"}
+			<div className="actions">
+				<button
+					className="action left"
+					title="Clear values"
+					onClick={clearValues}
+				>
+					<img src="img/clear.png" alt="Clear" />
+				</button>
+				{showNewWindow &&
+					<button
+						className="action right"
+						title="New window"
 						onClick={openNewWindow}
 					>
 						<img src="img/new_window.png" alt="New window" />
-					</a>
-					<div className="clearfix"></div>
-				</div>
-			: null }
+					</button>
+				}
+				<div className="clearfix"></div>
+			</div>
 		</div>
 	);
 }

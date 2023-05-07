@@ -3,7 +3,7 @@
 
 body {
 	font-family: @normalFontFamily;
-	font-size: 14px;
+	font-size: 16px;
 	background-color: #EEE;
 	max-width: 320px;
 
@@ -16,7 +16,7 @@ body {
 
 		&.label {
 			font-family: @normalFontFamily;
-			font-size: 14px;
+			font-size: 16px;
 			width: 30px;
 			text-align: left;
 
@@ -31,14 +31,15 @@ body {
 			input {
 				width: 100%;
 				text-align: right;
-				font-family: @normalFontFamily;
-				font-size: 14px;
+				font-family: @monospaceFontFamily;
+				font-size: 16px;
 				border-color: #DDD;
 				border-width: 1px;
 				border-style: solid;
-				border-radius: 4px;
-				padding: 2px 4px;
+				border-radius: 8px;
+				padding: 2px 6px;
 				display: block;
+				height: 24px;
 				&.code {
 					font-family: @monospaceFontFamily;
 				}
@@ -62,16 +63,32 @@ body {
 	div.actions {
 		margin-top: 0.6em;
 
-		a.action {
+		button.action {
 			padding: 0px 8px;
 			text-decoration: none;
 			color: #000;
 			outline: none;
-			float: right;
+			border-style: none;
+			padding: 4px;
+			background-color: transparent;
+			height: 28px;
+			width: 28px;
+			border-radius: 4px;
+
+			&.left {
+				float: left;
+			}
+			&.right {
+				float: right;
+			}
+
+			&:hover {
+				background-color: white;
+			}
 
 			img {
-				height: 18px;
-				width: 18px;
+				height: 20px;
+				width: 20px;
 			}
 		}
 	}

@@ -1,5 +1,10 @@
 # Hexconverter
 
+## 1.8.0 (07/05/2023)
+
+* Stop building the app as a website
+* Use localStorage to keep data. URL is no longer used to store data
+
 ## 1.7.0 (19/07/2020)
 
 * Separate build into two output folders: for web app and for addon
@@ -32,7 +37,3 @@
 ## 1.2 (30/11/2017)
 
 * The converter can be open in another window
-
-## 1.8
-
-* Stop building the app as a website

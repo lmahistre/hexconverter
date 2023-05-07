@@ -114,6 +114,7 @@ exports.imagesAddon = function() {
 		}
 
 		fs.copyFileSync(baseDir+'/src/img/new_window.png', baseDir+'/addon/img/new_window.png');
+		fs.copyFileSync(baseDir+'/src/img/clear.png', baseDir+'/addon/img/clear.png');
 
 		const formats = config.app.iconFormats;
 

@@ -58,7 +58,7 @@ export default function(input, type) {
 	}
 
 	// Color
-	if (out.hexadecimal.length > 6) {
+	if (out.hexadecimal.length > 6 || !out.hexadecimal.length) {
 		out.color = '';
 		out.colorName = '';
 	}
